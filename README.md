@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KG Soluciones - Página Web
 
-## Getting Started
+Este repositorio contiene el código fuente para la página web de **KG Soluciones**, una empresa especializada en servicios de ingeniería electromecánica. La página incluye una landing page que presenta los servicios ofrecidos, una sección de tienda de productos, y permite a los clientes solicitar cotizaciones y ponerse en contacto fácilmente.
 
-First, run the development server:
+## Descripción
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+La página web de KG Soluciones está diseñada para ser una plataforma integral que no solo presenta los servicios de la empresa, sino que también permite a los usuarios explorar y adquirir productos a través del catálogo en línea.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Servicios Destacados
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Diseño, modelado e impresión 3D**: Fabricación de piezas plásticas personalizadas.
+- **Sistemas de alarma vehicular y hogar**: Fabricación, reparación y mantenimiento de sistemas de seguridad.
+- **Instalación de cámaras de seguridad y domótica**: Implementación de sistemas de seguridad integrados y automatización del hogar.
+- **Sistemas automatizados**: Diseño, construcción y mantenimiento.
+- **Servicios técnicos en tarjetas electrónicas**: Reparación y mantenimiento de componentes electrónicos.
+- **Electricidad automotriz**: Soporte técnico especializado en sistemas eléctricos para vehículos.
+- **Sistema de gestión de seguridad y salud en el trabajo (SST)**: Consultoría y soporte para la implementación de sistemas de SST en empresas.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Catálogo
 
-## Learn More
+La sección de catálogo permite a los usuarios explorar y adquirir productos relacionados con los servicios ofrecidos. Esta funcionalidad está diseñada para ofrecer una experiencia de compra fluida y eficiente.
 
-To learn more about Next.js, take a look at the following resources:
+## Tecnologías
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+La página web fue desarrollada utilizando las siguientes tecnologías:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Next.js 14**: Framework de React para aplicaciones web modernas.
+- **TypeScript**: Lenguajes de programación utilizados en el proyecto.
+- **Tailwind CSS**: Gestión de estilos CSS para la página web.
+- **Zustand**: Gestor de estado de React.
+- **Firebase**: Gestión de bases de datos en tiempo real.
 
-## Deploy on Vercel
+## Contacto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Desarrollado por mi emprendimiento [**WebMinds Colombia**](https://www.web-minds-col.com).
