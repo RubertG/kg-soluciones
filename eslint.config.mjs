@@ -16,7 +16,8 @@ export default [
     rules: {
       "react/react-in-jsx-scope": "off",
       "comma-dangle": ["error", "never"],
-      "semi": ["error", "never"]
+      "semi": ["error", "never"],
+      "quote-props": ["error", "as-needed"]
     }
   }
 ]
