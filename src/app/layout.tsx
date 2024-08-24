@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
-
-const inter = Inter({ subsets: ["latin"] })
+import { poppins } from "@/core"
 
 export const metadata: Metadata = {
   title: "KG Soluciones - Servicios y contácto",
@@ -17,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         {children}
       </body>
     </html>
