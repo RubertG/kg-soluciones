@@ -1,6 +1,7 @@
 import { collection, doc, getDoc, getDocs, limit, query, startAfter } from "firebase/firestore"
-import { LIMIT_PRODUCTS, Product } from "@/core"
+import { LIMIT_PRODUCTS } from "@/core"
 import { db } from "@/core"
+import { type Product } from "../types/db/db"
 
 export const getProducts = async (start: number, limitProducts: number = LIMIT_PRODUCTS) => {
   const q = query(collection(db, 'products'), limit(limitProducts), startAfter(start))

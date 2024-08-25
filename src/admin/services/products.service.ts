@@ -1,4 +1,5 @@
-import { db, Product } from "@/core"
+import { db } from "@/core"
+import { type Product } from "@/core/types/db/db"
 import { deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore"
 
 export const saveProduct = async (product: Product) => {
@@ -29,7 +30,6 @@ export const deleteProduct = async (id: string) => {
       error: false
     }
   } catch (error) {
-    console.log(error)
 
     return {
       message: 'Error al eliminar el producto',

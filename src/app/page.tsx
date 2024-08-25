@@ -1,6 +1,8 @@
 function Page() {
   return (
-    <>Hola mundo</>
+    <main>
+      Hola mundo
+    </main>
   )
 }
 
