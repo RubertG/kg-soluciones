@@ -38,6 +38,7 @@ export const deleteProduct = async (id: string) => {
   }
 }
 
+// Eliminar imagenes que fueron eliminadas por el usuario
 export const updateProduct = async (product: Product) => {
   try {
     const docRef = doc(db, 'products', product.id)
