@@ -4,6 +4,7 @@ const config: Config = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/admin/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/landing/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/core/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/catalog/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/cart/**/*.{js,ts,jsx,tsx,mdx}",
