@@ -30,7 +30,8 @@ export const deleteProduct = async (id: string) => {
       error: false
     }
   } catch (error) {
-
+    console.log(error)
+    
     return {
       message: 'Error al eliminar el producto',
       error: true

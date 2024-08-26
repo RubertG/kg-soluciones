@@ -17,8 +17,7 @@ export default [
       "react/react-in-jsx-scope": "off",
       "comma-dangle": ["error", "never"],
       semi: ["error", "never"],
-      "quote-props": ["error", "as-needed"],
-      "@typescript-eslint/no-unused-vars": "off"
+      "quote-props": ["error", "as-needed"]
     }
   }
 ]
