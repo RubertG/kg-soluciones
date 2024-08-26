@@ -21,3 +21,10 @@
   background-size: cover;
   background-position: bottom center;
 }
+
+.decoration-grid-service {
+  background-image: url('/assets/grid.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
