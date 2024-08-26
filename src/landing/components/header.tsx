@@ -1,5 +1,6 @@
 import { PrincipalButton, SecondaryButton } from "@/core"
 import Image from "next/image"
+import { HeaderDecoration } from "./header-decoration"
 
 interface Props {
   className?: string
@@ -9,7 +10,8 @@ export const Header = ({
   className
 }: Props) => {
   return (
-    <header className={`min-h-screen md:grid md:grid-cols-[auto_35%] md:items-center relative px-4 xl:px-0 max-w-6xl mx-auto ${className}`}>
+    <header className={`h-screen max-h-[700px] md:grid md:grid-cols-[auto_35%] md:items-center px-4 xl:px-0 max-w-6xl mx-auto ${className}`}>
+      <HeaderDecoration />
       <section className="md:-mt-4">
         <h1 className="text-text-100 text-[2.5rem] font-bold text-center md:text-start md:text-6xl">
           KG Soluciones
