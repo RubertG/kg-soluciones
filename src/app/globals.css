@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.img-mask {
+  mask-image: linear-gradient(
+    black 80%,
+    transparent
+  );
+}
+
+.decoration-light {
+  background-image: url('/assets/light.svg'); 
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.decoration-grid {
+  background-image: url('/assets/grid-1.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+}

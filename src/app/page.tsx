@@ -1,7 +1,10 @@
+import { Header, HeaderDecoration } from "@/landing"
+
 function Page() {
   return (
-    <main>
-      Hola mundo
+    <main className="relative overflow-x-hidden">
+      <HeaderDecoration />
+      <Header className="pt-20 md:pt-0" />
     </main>
   )
 }
