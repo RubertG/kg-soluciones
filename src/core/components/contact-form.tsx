@@ -1,15 +1,16 @@
 import { Input, PrincipalActionButton } from "@/core"
+import { TextArea } from "./text-area"
 
 interface Props {
   className?: string
 }
 
-const ContactForm = ({
+export const ContactForm = ({
   className
 }: Props) => {
   return (
     <form
-      className={`w-full max-w-xl mx-auto p-3 lg:p-5 border border-bg-200 rounded-lg bg-bg-card/30 backdrop-blur-[3px] ${className}`}
+      className={`w-full max-w-lg mx-auto p-3 lg:p-5 border border-bg-200 rounded-lg bg-bg-card/30 backdrop-blur-[3px] ${className}`}
     >
       <Input
         labelText="Nombre y apellido"
@@ -25,16 +26,23 @@ const ContactForm = ({
       />
       <Input
         className="mt-4 appearance-none"
-        labelText="Nombre y apellido"
+        labelText="Número de teléfono"
         type="number"
         id="number"
         placeholder="Ingresa tu número de teléfono"
       />
-      <PrincipalActionButton>
+      <TextArea 
+        className="mt-4"
+        labelText="¿Qué necesitas?"
+        id="description"
+        isObligatory={false}
+        placeholder="Ingresa información sobre el servicio que necesitas"
+      />
+      <PrincipalActionButton
+        className="w-full mt-4"
+      >
         Hacer cotización 
       </PrincipalActionButton>
     </form>
   )
 }
-
-export default ContactForm

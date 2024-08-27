@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	scroll-behavior: smooth;
+}
+
 .img-mask {
   mask-image: linear-gradient(
     black 80%,
@@ -13,6 +17,11 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+textarea {
+  resize: none;
+  field-sizing: content;
 }
 
 .decoration-light {

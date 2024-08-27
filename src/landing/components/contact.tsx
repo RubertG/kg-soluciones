@@ -1,5 +1,4 @@
-import ContactForm from "@/core/components/contact-form"
-import Social from "@/core/components/social"
+import { ContactForm, Social } from "@/core"
 
 interface Props {
   className?: string
