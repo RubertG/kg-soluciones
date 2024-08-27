@@ -25,23 +25,25 @@ interface Props {
   className?: string
 }
 
-const Social = ({
+export const Social = ({
   className
 }: Props) => {
   return (
     <ul className={`flex items-center justify-center gap-3 ${className}`}>
       {
         social.map(({ name, icon, href }) => (
-          <li key={name}>
+          <li
+            className="lg:hover:scale-110 lg:transition-transform"
+            key={name}
+          >
             <Link
+              title={`Ir a mi cuenta de ${name}`}
               href={href}>
               {icon}
             </Link>
           </li>
         ))
       }
-    </ul >
+    </ul>
   )
 }
-
-export default Social
