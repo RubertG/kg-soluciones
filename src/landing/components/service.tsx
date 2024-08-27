@@ -10,7 +10,7 @@ export const Service = ({
   className
 }: Props) => {
   return (
-    <div className={`bg-bg-card/30 backdrop-blur-[3px] rounded-lg p-3.5 text-sm text-text-200 text-center w-[275px] ${className}`}>
+    <div className={`bg-bg-card/30 backdrop-blur-[3px] border border-bg-200 rounded-lg p-3.5 text-sm text-text-200 text-center w-[275px] ${className}`}>
       <picture
         className="flex h-[80px] items-center justify-center"
       >
