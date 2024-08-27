@@ -1,4 +1,5 @@
-import React from 'react'
+import ContactForm from "@/core/components/contact-form"
+import Social from "@/core/components/social"
 
 interface Props {
   className?: string
@@ -9,15 +10,15 @@ const Contact = ({
 }: Props) => {
   return (
     <section
-      className={`max-w-6xl mx-auto ${className}`}
+      className={`max-w-6xl mx-auto px-4 xl:px-0 ${className}`}
     >
       <h2 className="text-text-100 text-4xl font-bold text-center md:text-[3.4rem]">
         Contacto
       </h2>
-      <p className="text-sm text-text-200 mt-3 lg:text-base">
-        Para solicitar presupuestos de cotizaciones o dudas o consultas sobre
-        nuestros servicios, por favor no dude en contactarnos.
-      </p>
+      <div className="mt-14">
+        <ContactForm />
+        <Social className="mt-5" />
+      </div>
     </section>
   )
 }
