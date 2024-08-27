@@ -39,7 +39,7 @@ export const Services = ({
 }: Props) => {
   return (
     <section
-      className={`max-w-6xl mx-auto mt-5 md:mt-2 pb-10 ${className}`}
+      className={`max-w-6xl mx-auto ${className}`}
     >
       <div className="relative w-full h-auto">
         <div className="decoration-grid-service absolute -top-10 left-1/2 -translate-x-1/2 w-full min-w-[1280px] min-h-[659px] opacity-10 -z-10" />
