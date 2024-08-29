@@ -1,12 +1,14 @@
+import clsx from 'clsx'
 import React, { forwardRef } from 'react'
 
 interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   labelText?: string
   isObligatory?: boolean
+  isValid?: boolean
 }
 
 export const TextArea = forwardRef(function TextArea({
-  labelText, className, isObligatory = true, id, ...props
+  labelText, className, isObligatory = true, id, isValid = true, ...props
 
 }: Props, ref: React.Ref<HTMLTextAreaElement>) {
   return (
@@ -22,7 +24,12 @@ export const TextArea = forwardRef(function TextArea({
         )
       }
       <textarea
-        className="border border-bg-200 bg-bg-card/30 rounded-lg px-3.5 py-2.5 w-full focus:outline-none focus:border-primary-100 transition-colors text-text-200 placeholder:text-text-300 text-sm"
+        className={
+          clsx("border border-bg-200 bg-bg-card/30 rounded-lg px-3.5 py-2.5 w-full focus:outline-none transition-colors text-text-200 placeholder:text-text-300 text-sm", {
+            "focus:border-primary-100": isValid,
+            "focus:border-red-500": !isValid
+          })
+        }
         ref={ref}
         id={id}
         {...props}
