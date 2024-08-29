@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { poppins } from "@/core"
+import { Footer, poppins } from "@/core"
 
 export const metadata: Metadata = {
   title: "KG Soluciones - Servicios y contácto",
@@ -17,6 +17,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${poppins.className} bg-bg-100 antialiased overflow-x-hidden`}>
         {children}
+        <Footer />
       </body>
     </html>
   )
