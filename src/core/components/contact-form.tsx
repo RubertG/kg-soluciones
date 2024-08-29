@@ -18,7 +18,7 @@ export const ContactForm = ({
 
   return (
     <form
-      className={`w-full max-w-lg mx-auto p-3 lg:p-5 border border-bg-200 rounded-lg bg-bg-card/30 backdrop-blur-[3px] ${className}`}
+      className={`w-full max-w-lg mx-auto p-3 lg:p-5 border border-bg-200 rounded-lg bg-bg-card/30 backdrop-blur-[2px] ${className}`}
       onSubmit={handleSubmit}
     >
       <Input

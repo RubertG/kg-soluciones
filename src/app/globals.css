@@ -43,3 +43,10 @@ textarea {
   background-size: 100% 100%;
   background-position: center;
 }
+
+.decoration-grid-contact {
+  background-image: url('/assets/pattern.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
