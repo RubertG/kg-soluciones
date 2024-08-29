@@ -7,11 +7,15 @@ export const useNav = () => {
   const [isTop, setIsTop] = useState(true)
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    setIsTop(window.scrollY < 10)
+
     const handleScroll = () => {
       setIsTop(window.scrollY < 10)
     }
     window.addEventListener('scroll', handleScroll)
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
