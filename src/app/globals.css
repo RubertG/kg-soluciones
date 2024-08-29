@@ -25,27 +25,27 @@ textarea {
 }
 
 .decoration-light {
-  background-image: url('/assets/light.svg'); 
+  background-image: url('/assets/header-light.svg'); 
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
 
 .decoration-grid {
-  background-image: url('/assets/grid-1.svg');
+  background-image: url('/assets/header-grid.svg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
 }
 
 .decoration-grid-service {
-  background-image: url('/assets/grid.svg');
+  background-image: url('/assets/services-grid.svg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
 }
 
 .decoration-grid-contact {
-  background-image: url('/assets/pattern.svg');
+  background-image: url('/assets/contact-grid.svg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
