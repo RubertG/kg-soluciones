@@ -26,8 +26,8 @@ export function Nav() {
   return (
     <nav
       className={clsx("fixed w-full top-0 left-0 z-30 px-4 py-2.5 transition-colors", {
-        "bg-bg-100/90 lg:bg-bg-100/40 lg:backdrop-blur-sm": !isTop,
-        "bg-transparent": isTop
+        "bg-bg-100/90 lg:bg-bg-100/40 lg:backdrop-blur-sm": !isTop || open,
+        "bg-transparent": isTop && !open
       })}
     >
       <nav
