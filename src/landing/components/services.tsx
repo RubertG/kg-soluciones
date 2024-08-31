@@ -44,7 +44,10 @@ export const Services = ({
       <div className="relative w-full h-auto">
         <div className="decoration-grid-service absolute -top-10 left-1/2 -translate-x-1/2 w-full min-w-[1280px] min-h-[659px] opacity-10 -z-10" />
       </div>
-      <h2 className="text-text-100 text-4xl font-bold text-center md:text-[3.4rem]">
+      <h2
+        className="text-text-100 text-4xl font-bold text-center md:text-[3.4rem] entry-animation"
+        style={{ animationDelay: "0.5s" }}
+      >
         Servicios
       </h2>
       <ul className="flex items-center justify-center flex-wrap gap-3 gap-y-5 mt-16">
