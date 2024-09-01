@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { defaultUrl, Footer, poppins } from "@/core"
+import { Toaster } from "sonner"
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     ],
     locale: "es-ES",
     type: "website"
-  }  
+  }
 }
 
 export default function RootLayout({
@@ -37,6 +38,16 @@ export default function RootLayout({
       <body className={`${poppins.className} bg-bg-100 antialiased overflow-x-hidden`}>
         {children}
         <Footer />
+        <Toaster
+          richColors
+          toastOptions={{
+            unstyled: true,
+            classNames: {
+              toast: 'w-full py-3 px-4 rounded-lg text-sm flex items-center justify-start gap-1.5',
+              error: '!text-red-100 !bg-red-950/40 border !border-red-950'
+            }
+          }}
+        />
       </body>
     </html>
   )
