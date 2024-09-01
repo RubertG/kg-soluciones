@@ -5,7 +5,6 @@ import { auth } from '@/core'
 interface AuthState {
   user: User | null;
   loading: boolean;
-  error: string | null;
   setUser: (user: User | null) => void;
   setLoading: (loading: boolean) => void;
 }
@@ -13,7 +12,6 @@ interface AuthState {
 export const useAuthStore = create<AuthState>()((set) => ({
   user: null,
   loading: true,
-  error: null,
   setUser: (user) => set({ user }),
   setLoading: (loading) => set({ loading })
 }))
