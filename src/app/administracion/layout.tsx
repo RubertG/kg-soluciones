@@ -1,4 +1,4 @@
-import { ProtectedRoute } from "@/admin"
+import { Nav, ProtectedRoute } from "@/admin"
 
 function LayoutAdmin({
   children
@@ -7,7 +7,10 @@ function LayoutAdmin({
 }) {
   return (
     <ProtectedRoute>
-      {children}
+      <Nav />
+      <main className="pl-16 pr-4 w-full min-h-[86dvh]">
+        {children}
+      </main>
     </ProtectedRoute>
   )
 }

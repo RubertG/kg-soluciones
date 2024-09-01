@@ -9,13 +9,13 @@ export const MenuIcon = ({
 }: Props) => {
   return (
     <>
-      <span className={clsx("h-[2px] w-5 bg-gray-200 rounded-lg transition-transform", {
+      <span className={clsx("h-[2px] w-5 bg-text-200 rounded-lg transition-transform", {
         "translate-y-[5px] -rotate-45": open
       })}></span>
-      <span className={clsx("h-[2px] w-5 bg-gray-200 rounded-lg transition-transform", {
+      <span className={clsx("h-[2px] w-5 bg-text-200 rounded-lg transition-transform", {
         "opacity-0": open
       })}></span>
-      <span className={clsx("h-[2px] w-5 bg-gray-200 rounded-lg transition-transform", {
+      <span className={clsx("h-[2px] w-5 bg-text-200 rounded-lg transition-transform", {
         "-translate-y-[5px] rotate-45": open
       })}></span>
     </>
