@@ -32,5 +32,9 @@ export const ProtectedRoute = ({ children }: Props) => {
     return <>{children}</>
   }
 
-  return null
+  return (
+    <main className='h-[86dvh] flex items-center justify-center'>
+      <Spinner />
+    </main>
+  )
 }
