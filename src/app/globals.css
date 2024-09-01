@@ -7,61 +7,72 @@ html {
 }
 
 .img-mask {
-  mask-image: linear-gradient(
-    black 80%,
-    transparent
-  );
+	mask-image: linear-gradient(black 80%, transparent);
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 textarea {
-  resize: none;
-  field-sizing: content;
+	resize: none;
+	field-sizing: content;
 }
 
 .decoration-light {
-  background-image: url('/assets/header-light.svg'); 
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+	background-image: url("/assets/header-light.svg");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
 }
 
 .decoration-grid {
-  background-image: url('/assets/header-grid.svg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom center;
+	background-image: url("/assets/header-grid.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom center;
 }
 
 .decoration-grid-service {
-  background-image: url('/assets/services-grid.svg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
+	background-image: url("/assets/services-grid.svg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
 }
 
 .decoration-grid-contact {
-  background-image: url('/assets/contact-grid.svg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
+	background-image: url("/assets/contact-grid.svg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
 }
 
 .entry-animation {
-  animation: entry 0.3s ease-out 0.1s both;
+	animation: entry 0.3s ease-out 0.1s both;
 }
 
 @keyframes entry {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.custom-loader {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	-webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 5px), #000 0);
+	animation: s3 1s infinite linear;
+}
+
+@keyframes s3 {
+	100% {
+		transform: rotate(1turn);
+	}
 }
