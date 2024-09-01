@@ -3,7 +3,7 @@
 import clsx from "clsx"
 import Link from "next/link"
 import Image from "next/image"
-import { NavItems, useNav } from "@/core"
+import { MenuIcon, NavItems, useNav } from "@/core"
 
 const links = [
   {
@@ -52,15 +52,7 @@ export function Nav() {
           title="Abrir menú"
           onClick={() => setOpen(!open)}
         >
-          <span className={clsx("h-[2px] w-5 bg-gray-200 rounded-lg transition-transform", {
-            "translate-y-[5px] -rotate-45": open
-          })}></span>
-          <span className={clsx("h-[2px] w-5 bg-gray-200 rounded-lg transition-transform", {
-            "opacity-0": open
-          })}></span>
-          <span className={clsx("h-[2px] w-5 bg-gray-200 rounded-lg transition-transform", {
-            "-translate-y-[5px] rotate-45": open
-          })}></span>
+          <MenuIcon open={open} />
         </button>
       </nav>
     </nav>
