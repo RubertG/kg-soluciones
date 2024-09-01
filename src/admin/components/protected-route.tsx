@@ -3,6 +3,7 @@
 import { ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/auth/stores/auth.store'
+import { Spinner } from '@/core/components/spinner'
 
 interface Props {
   children: ReactNode;
@@ -15,16 +16,20 @@ export const ProtectedRoute = ({ children }: Props) => {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login-administracion') 
+      router.push('/login-administracion')
     }
   }, [user, loading, router])
 
   if (loading) {
-    return <div>Loading...</div> 
+    return (
+      <main className='h-[86dvh] flex items-center justify-center'>
+        <Spinner />
+      </main>
+    )
   }
 
   if (user) {
-    return <>{children}</> 
+    return <>{children}</>
   }
 
   return null
