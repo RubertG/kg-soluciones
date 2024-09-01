@@ -1,4 +1,4 @@
-import { Nav } from "@/core"
+import { Footer, Nav } from "@/core"
 
 async function FirebaseLayout({
   children
@@ -10,6 +10,7 @@ async function FirebaseLayout({
     <>
       <Nav />
       {children}
+      <Footer />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import { defaultUrl, Footer, poppins } from "@/core"
+import { defaultUrl, poppins } from "@/core"
 import { Toaster } from "sonner"
 
 export const metadata: Metadata = {
@@ -37,7 +37,6 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.className} bg-bg-100 antialiased overflow-x-hidden`}>
         {children}
-        <Footer />
         <Toaster
           richColors
           toastOptions={{
