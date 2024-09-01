@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
-import Link from "next/link"
 import clsx from "clsx"
 import { Categories, Home, Logout, MenuIcon, Products } from "@/core"
 import { singOutSessionService } from "@/auth"
@@ -41,7 +40,12 @@ export const Nav = () => {
       toast.error(error)
     }
 
-    router.push("/login")
+    router.push("/login-administracion")
+  }
+
+  const handleClick = (path: string) => {
+    setOpen(false)
+    router.push(path)
   }
 
   return (
@@ -70,16 +74,16 @@ export const Nav = () => {
 
               return (
                 <li key={link.name}>
-                  <Link
-                    className={clsx("flex items-center gap-3 text-text-200 p-2 rounded-lg lg:hover:bg-bg-300 lg:transition-colors", {
+                  <button
+                    className={clsx("flex items-center gap-3 text-text-200 p-2 rounded-lg lg:hover:bg-bg-300 lg:transition-colors w-full", {
                       "bg-bg-300": isActive
                     })}
                     title={`Ir a la sección de ${link.name.toLocaleLowerCase()}`}
-                    href={`/administracion/${link.path}`}
+                    onClick={() => handleClick(`/administracion/${link.path}`)}
                   >
                     <picture>{link.icon}</picture>
                     <p className="text-ellipsis overflow-hidden whitespace-nowrap">{link.name}</p>
-                  </Link>
+                  </button>
                 </li>
               )
             })
