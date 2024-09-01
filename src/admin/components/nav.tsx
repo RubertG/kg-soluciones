@@ -66,7 +66,8 @@ export const Nav = () => {
         <ul className="mt-5 flex flex-col gap-1">
           {
             links.map(link => {
-              let isActive = pathName === `/administracion/${link.path}`
+              let isActive = pathName === `/administracion${link.path}`
+              console.log(`/administracion${link.path}`)
 
               if (link.path === "/") {
                 isActive = pathName === `/administracion`
