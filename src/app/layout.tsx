@@ -43,7 +43,8 @@ export default function RootLayout({
             unstyled: true,
             classNames: {
               toast: 'w-full py-3 px-4 rounded-lg text-sm flex items-center justify-start gap-1.5',
-              error: '!text-red-100 !bg-red-950/40 border !border-red-950'
+              error: '!text-red-100 !bg-red-800/40 backdrop-blur-sm border !border-red-800',
+              success: '!text-green-100 !bg-green-800/40 backdrop-blur-sm border !border-green-800'
             }
           }}
         />
