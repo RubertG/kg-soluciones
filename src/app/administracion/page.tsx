@@ -6,8 +6,8 @@ function AdminPage() {
   return (
     <section className="py-7">
       <Header title="Administración" />
-      <ul className="flex flex-wrap items-start justify-center md:justify-start gap-4">
-        <li className="bg-bg-card/30 rounded-lg p-3.5 border border-bg-200 w-[200px]">
+      <ul className="flex flex-wrap gap-4">
+        <li className="bg-bg-card/40 rounded-lg p-3.5 border border-bg-200 w-[200px]">
           <div>
             <Categories className="w-12 h-12 m-auto" />
           </div>
@@ -18,7 +18,7 @@ function AdminPage() {
             title="Ir a la seccion de categorias"
           >Más información</Link>
         </li>
-        <li className="bg-bg-card/30 rounded-lg p-3.5 border border-bg-200 w-[200px]">
+        <li className="bg-bg-card/40 rounded-lg p-3.5 border border-bg-200 w-[200px]">
           <div>
             <Products className="w-12 h-12 m-auto" />
           </div>
