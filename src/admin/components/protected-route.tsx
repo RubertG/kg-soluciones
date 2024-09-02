@@ -22,7 +22,7 @@ export const ProtectedRoute = ({ children }: Props) => {
 
   if (loading) {
     return (
-      <main className='h-[86dvh] flex items-center justify-center'>
+      <main className='h-[100dvh] flex items-center justify-center'>
         <Spinner />
       </main>
     )
@@ -33,7 +33,7 @@ export const ProtectedRoute = ({ children }: Props) => {
   }
 
   return (
-    <main className='h-[86dvh] flex items-center justify-center'>
+    <main className='h-[100dvh] flex items-center justify-center'>
       <Spinner />
     </main>
   )
