@@ -1,4 +1,4 @@
-import { CategoryForm, Header } from "@/admin"
+import { CategoryForm, CategoryTable, Header } from "@/admin"
 
 function CategoriesPage() {
   return (
@@ -8,11 +8,9 @@ function CategoriesPage() {
           Administra todas las categorías de tu catálogo de productos. En esta sección, puedes crear, modificar y eliminar categorías de manera sencilla. Recuerda asignar un nombre breve a cada categoría, entre 3 y 20 caracteres, para facilitar su gestión y organización.
         </p>
       </Header>
-      <div>
+      <div className="flex flex-col md:flex-row md:flex-wrap gap-5 items-start">
         <CategoryForm />
-        <aside>
-
-        </aside>
+        <CategoryTable />
       </div>
     </section>
   )
