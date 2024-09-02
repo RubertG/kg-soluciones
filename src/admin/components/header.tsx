@@ -11,7 +11,7 @@ export const Header = ({
     <header className={className}>
       <h1 className="text-text-100 text-3xl font-bold md:text-4xl">{title}</h1>
       {children}
-      <hr className="my-4 border-bg-300" />
+      <hr className="my-5 border-bg-300" />
     </header>
   )
 }
