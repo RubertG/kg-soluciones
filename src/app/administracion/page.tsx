@@ -4,7 +4,7 @@ import Link from "next/link"
 
 function AdminPage() {
   return (
-    <section className="w-full py-7">
+    <section className="py-7">
       <Header title="Administración" />
       <ul className="flex flex-wrap items-start justify-center md:justify-start gap-4">
         <li className="bg-bg-card/30 rounded-lg p-3.5 border border-bg-200 w-[200px]">
