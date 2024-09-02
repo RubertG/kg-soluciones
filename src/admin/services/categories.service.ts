@@ -1,6 +1,6 @@
 import { db } from "@/core"
 import { Category } from "@/core/types/db/db"
-import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore"
 
 const NAME_COLLECTION = 'categories'
 
@@ -74,6 +74,27 @@ export const saveCategory = async (category: Category) => {
     return {
       success: null,
       error: 'Error al crear la categoría'
+    }
+  }
+}
+
+export const deleteCategories = async (categories: Category[]) => {
+  try {
+    await Promise.all(categories.map(async (category) => {
+      const docRef = doc(db, NAME_COLLECTION, category.name)
+      await deleteDoc(docRef)
+    }))
+
+    return {
+      error: null,
+      success: `Categoría${categories.length > 1 ? "s" : ""} eliminadas correctamente`
+    }
+  } catch (error) {
+    console.log(error)
+
+    return {
+      error: 'Error al eliminar categorías',
+      success: null
     }
   }
 }
