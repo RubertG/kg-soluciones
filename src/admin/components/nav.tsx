@@ -49,7 +49,7 @@ export const Nav = () => {
   }
 
   return (
-    <nav className={clsx("fixed bg-bg-200 h-full top-0 left-0 px-1 py-1 pb-3 flex flex-col justify-between overflow-hidden transition-all", {
+    <nav className={clsx("fixed bg-bg-200 h-full top-0 left-0 px-1 py-1 pb-3 flex flex-col justify-between overflow-hidden transition-all z-10", {
       "w-[3.25rem]": !open,
       "w-48": open
     })}>
@@ -67,7 +67,6 @@ export const Nav = () => {
           {
             links.map(link => {
               let isActive = pathName === `/administracion${link.path}`
-              console.log(`/administracion${link.path}`)
 
               if (link.path === "/") {
                 isActive = pathName === `/administracion`
