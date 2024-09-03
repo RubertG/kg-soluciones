@@ -1,9 +1,21 @@
 import { TableStyles } from "react-data-table-component"
 
 export const customStyles: TableStyles = {
+  pagination: {
+    style: {
+      backgroundColor: 'transparent',
+      color: '#b0b0b0',
+      borderTop: '1px solid #2b3545'
+    },
+    pageButtonsStyle: {
+      backgroundColor: 'transparent',
+      color: '#b0b0b0'
+    }
+  },
   table: {
     style: {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      maxWidth: '1240px'
     }
   },
   headRow: {
@@ -14,6 +26,12 @@ export const customStyles: TableStyles = {
       fontSize: '16px'
     }
   },
+  headCells: {
+    style: {
+      backgroundColor: 'transparent',
+      color: 'white'
+    }
+  },
   rows: {
     style: {
       backgroundColor: 'transparent',
@@ -22,16 +40,11 @@ export const customStyles: TableStyles = {
       fontSize: '14px'
     }
   },
-  headCells: {
-    style: {
-      backgroundColor: 'transparent',
-      color: 'white'
-    }
-  },
   cells: {
     style: {
       backgroundColor: 'transparent',
-      color: '#b0b0b0'
+      color: '#b0b0b0',
+      width: 'auto !important'
     }
   },
   noData: {
