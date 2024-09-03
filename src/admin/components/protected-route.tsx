@@ -2,8 +2,8 @@
 
 import { ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/auth/stores/auth.store'
-import { Spinner } from '@/core/components/spinner'
+import { useAuthStore } from '@/auth'
+import { Spinner } from '@/core'
 
 interface Props {
   children: ReactNode;

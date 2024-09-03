@@ -2,9 +2,11 @@ import { db } from "@/core"
 import { type Product } from "@/core/types/db/db"
 import { deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore"
 
+const NAME_COLLECTION = 'products'
+
 export const saveProduct = async (product: Product) => {
   try {
-    const docRef = doc(db, 'products', product.id)
+    const docRef = doc(db, NAME_COLLECTION, product.id)
     await setDoc(docRef, product)
 
     return {
@@ -23,7 +25,7 @@ export const saveProduct = async (product: Product) => {
 
 export const deleteProduct = async (id: string) => {
   try {
-    await deleteDoc(doc(db, 'products', id))
+    await deleteDoc(doc(db, NAME_COLLECTION, id))
 
     return {
       message: 'Producto eliminado correctamente',
@@ -42,7 +44,7 @@ export const deleteProduct = async (id: string) => {
 // Eliminar imagenes que fueron eliminadas por el usuario
 export const updateProduct = async (product: Product) => {
   try {
-    const docRef = doc(db, 'products', product.id)
+    const docRef = doc(db, NAME_COLLECTION, product.id)
     await updateDoc(docRef, { ...product })
 
     return {

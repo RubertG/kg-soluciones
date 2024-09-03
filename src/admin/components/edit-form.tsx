@@ -1,7 +1,8 @@
 "use client"
 
-import { useCategoryTableStore } from "../stores/category-table.store"
-import { CategoryForm } from "./category-form"
+import { useCategoryTableStore, CategoryForm } from "@/admin"
+import { X } from "@/core"
+import Link from "next/link"
 
 interface Props {
   className?: string
@@ -15,6 +16,12 @@ export const EditForm = ({
 
   return (
     <>
+      <Link
+        className="absolute top-5 right-5"
+        href={`/administracion/categorias`}
+      >
+        <X />
+      </Link>
       <CategoryForm
         className={className}
         defaultValues={{ name: categories.find(c => c.id === editId)?.name || "" }}
