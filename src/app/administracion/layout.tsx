@@ -13,7 +13,7 @@ function LayoutAdmin({
         <div className="row-span-full max-w-[calc(100vw-80px)] lg:max-w-[calc(100vw-104px)]">
           {children}
         </div>
-        <Footer className="pl-16 md:pl-0" />
+        <Footer />
       </main>
     </ProtectedRoute>
   )
