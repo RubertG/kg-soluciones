@@ -9,10 +9,12 @@ function LayoutAdmin({
   return (
     <ProtectedRoute>
       <Nav />
-      <main className="pl-16 lg:pl-20 pr-4 lg:pr-6 w-full min-h-[100dvh]">
-        {children}
+      <main className="pl-16 lg:pl-20 pr-4 lg:pr-6 w-full grid grid-rows-2 min-h-[100dvh]">
+        <div className="row-span-full">
+          {children}
+        </div>
+        <Footer className="pl-16 md:pl-0" />
       </main>
-      <Footer className="pl-16 md:pl-0" />
     </ProtectedRoute>
   )
 }
