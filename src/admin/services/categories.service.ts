@@ -1,6 +1,6 @@
 import { db } from "@/core"
 import { Category } from "@/core/types/db/db"
-import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore"
 
 const NAME_COLLECTION = 'categories'
 
@@ -28,9 +28,9 @@ export const getCategories = async () => {
   }
 }
 
-export const getCategory = async (name: string) => {
+export const getCategory = async (id: string) => {
   try {
-    const data = await getDoc(doc(db, NAME_COLLECTION, name))
+    const data = await getDoc(doc(db, NAME_COLLECTION, id))
 
     if (!data.exists()) return {
       category: null,
@@ -54,14 +54,14 @@ export const getCategory = async (name: string) => {
 
 export const saveCategory = async (category: Category) => {
   try {
-    const { category: categoryExist } = await getCategory(category.name)
+    const { category: categoryExist } = await getCategory(category.id)
 
     if (categoryExist) return {
       success: null,
       error: 'Categoría ya existe'
     }
 
-    const docRef = doc(db, NAME_COLLECTION, category.name)
+    const docRef = doc(db, NAME_COLLECTION, category.id)
     await setDoc(docRef, category)
 
     return {
@@ -74,6 +74,25 @@ export const saveCategory = async (category: Category) => {
     return {
       success: null,
       error: 'Error al crear la categoría'
+    }
+  }
+}
+
+export const updateCategory = async (category: Category) => {
+  try {
+    const docRef = doc(db, NAME_COLLECTION, category.id)
+    await updateDoc(docRef, { ...category })
+
+    return {
+      success: 'Categoría actualizada correctamente',
+      error: null
+    }
+  } catch (error) {
+    console.log(error)
+
+    return {
+      success: null,
+      error: 'Error al actualizar la categoría'
     }
   }
 }
