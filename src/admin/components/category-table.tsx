@@ -1,85 +1,21 @@
 "use client"
 
 import { Category } from "@/core/types/db/db"
-import { useEffect } from "react"
-import DataTable, { TableColumn, TableStyles } from "react-data-table-component"
-import { deleteCategories, TableLoader, useCategoryTableStore } from "@/admin"
+import DataTable, { TableColumn } from "react-data-table-component"
+import { customStyles, TableLoader, useCategoryTable } from "@/admin"
 import Link from "next/link"
-import { toast } from "sonner"
 
 interface Props {
   className?: string
 }
 
-const customStyles: TableStyles = {
-  table: {
-    style: {
-      backgroundColor: 'transparent'
-    }
-  },
-  headRow: {
-    style: {
-      backgroundColor: 'transparent',
-      borderBottomColor: 'transparent',
-      color: '#f2f2f2',
-      fontSize: '16px'
-    }
-  },
-  rows: {
-    style: {
-      backgroundColor: 'transparent',
-      borderTop: '1px solid #2b3545',
-      color: '#b0b0b0',
-      fontSize: '14px'
-    }
-  },
-  headCells: {
-    style: {
-      backgroundColor: 'transparent',
-      color: 'white'
-    }
-  },
-  cells: {
-    style: {
-      backgroundColor: 'transparent',
-      color: '#b0b0b0'
-    }
-  },
-  noData: {
-    style: {
-      backgroundColor: 'transparent',
-      color: '#b0b0b0'
-    }
-  },
-  progress: {
-    style: {
-      backgroundColor: 'transparent',
-      color: '#b0b0b0'
-    }
-  }
-}
-
 export const CategoryTable = ({
   className
 }: Props) => {
-  const fetchCategories = useCategoryTableStore(state => state.fetchCategories)
-  const loading = useCategoryTableStore(state => state.loading)
-  const error = useCategoryTableStore(state => state.error)
-  const loadingDelete = useCategoryTableStore(state => state.loadingDelete)
-  const categories = useCategoryTableStore(state => state.categories)
-  const setSelectedCategories = useCategoryTableStore(state => state.setSelectedCategories)
-  const selectedCategories = useCategoryTableStore(state => state.selectedCategories)
-  const deleteCategoriesState = useCategoryTableStore(state => state.deleteCategories)
-  const setLoadingDelete = useCategoryTableStore(state => state.setLoadingDelete)
-
-  useEffect(() => {
-    fetchCategories()
-  }, [])
-
-  useEffect(() => {
-    if (!error) return
-    toast.error(error)
-  }, [error])
+  const {
+    categories, handleChange, handleDelete,
+    loading, loadingDelete, selectedCategories
+  } = useCategoryTable()
 
   const columns: TableColumn<Category>[] = [
     {
@@ -107,26 +43,6 @@ export const CategoryTable = ({
       button: true
     }
   ]
-
-  const handleDelete = async () => {
-    if (!selectedCategories) return
-
-    setLoadingDelete(true)
-    const { error, success } = await deleteCategories(selectedCategories)
-
-    if (error) {
-      toast.error(error)
-    } else if (success) {
-      toast.success(success)
-      deleteCategoriesState()
-    }
-
-    setLoadingDelete(false)
-  }
-
-  const handleChange = (selectedRows: { allSelected: boolean; selectedCount: number; selectedRows: Category[]; }) => {
-    setSelectedCategories(selectedRows.selectedRows)
-  }
 
   return (
     <aside className={`rounded-lg bg-bg-card/40 p-3.5 border border-bg-200 w-full max-w-2xl ${className}`}>
