@@ -1,8 +1,32 @@
 import { db } from "@/core"
 import { type Product } from "@/core/types/db/db"
-import { deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc } from "firebase/firestore"
 
 const NAME_COLLECTION = 'products'
+
+export const getProducts = async () => {
+  try {
+    const q = query(collection(db, NAME_COLLECTION))
+    const data = await getDocs(q)
+    const products: Product[] = []
+
+    data.forEach(doc => {
+      products.push(doc.data() as Product)
+    })
+
+    return {
+      products,
+      error: null
+    }
+  } catch (error) {
+    console.log(error)
+
+    return {
+      products: [],
+      error: 'Error al obtener productos'
+    }
+  }
+}
 
 export const saveProduct = async (product: Product) => {
   try {
