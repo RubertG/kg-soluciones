@@ -8,6 +8,9 @@ interface ProductTableState {
   error?: string;
   selectedProducts?: Product[];
   loadingDelete: boolean;
+  confirmDelete: boolean;
+
+  setConfirmDelete: (confirmDelete: boolean) => void;
   setLoadingDelete: (loadingDelete: boolean) => void;
   setSelectedProducts: (selectedProducts: Product[]) => void;
   setError: (error: string | undefined) => void;
@@ -25,7 +28,9 @@ const storeApi: StateCreator<ProductTableState> = (set, get) => ({
   loadingDelete: false,
   error: undefined,
   selectedProducts: undefined,
+  confirmDelete: false,
 
+  setConfirmDelete: (confirmDelete) => set({ confirmDelete }),
   setLoading: (loading) => set({ loading }),
   setLoadingDelete: (loadingDelete) => set({ loadingDelete }),
   setProducts: (products) => set({ products }),
