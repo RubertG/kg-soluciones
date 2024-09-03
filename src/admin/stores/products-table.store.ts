@@ -1,4 +1,4 @@
-import { getProducts } from "@/core"
+import { getProducts } from "@/admin"
 import { Product } from "@/core/types/db/db"
 import { create, StateCreator } from "zustand"
 
@@ -48,7 +48,7 @@ const storeApi: StateCreator<ProductTableState> = (set, get) => ({
     set({ products: newProducts })
   },
   fetchProducts: async () => {
-    const { products, error } = await getProducts(0, 1000)
+    const { products, error } = await getProducts()
 
     if (error) {
       get().setError(error)
