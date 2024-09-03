@@ -1,6 +1,10 @@
+import { ProductsTable } from "@/admin"
+
 function ProductsPage() {
   return (
-    <>Productos</>
+    <section className="flex flex-col flex-wrap gap-5 items-start">
+      <ProductsTable />
+    </section>
   )
 }
 
