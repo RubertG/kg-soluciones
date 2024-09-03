@@ -2,7 +2,7 @@ import { db } from "@/core"
 import { type Product } from "@/core/types/db/db"
 import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc } from "firebase/firestore"
 import { getCategories } from "./categories.service"
-import { deleteFile } from "@/admin"
+import { deleteFile, saveFile } from "@/admin"
 
 const NAME_COLLECTION = 'products'
 
@@ -44,8 +44,20 @@ export const getProducts = async () => {
 
 export const saveProduct = async (product: Product) => {
   try {
+    const images = await Promise.all(product.images.map(async (image) => {
+      const img = await saveFile(image, NAME_COLLECTION)
+
+      return {
+        ...image,
+        url: img
+      }
+    }))
+
     const docRef = doc(db, NAME_COLLECTION, product.id)
-    await setDoc(docRef, product)
+    await setDoc(docRef, {
+      ...product,
+      images: images
+    })
 
     return {
       message: 'Producto creado correctamente',
@@ -65,7 +77,11 @@ export const deleteProduct = async (product: Product) => {
   try {
     await Promise.all([
       deleteDoc(doc(db, NAME_COLLECTION, product.id)),
-      Promise.all(product.images.map(image => deleteFile(image.url)))
+      Promise.all(product.images.map((image) => {
+        if (!image.url) return
+
+        return deleteFile(image.url)
+      }))
     ])
 
     return {
@@ -86,9 +102,9 @@ export const deleteProducts = async (products: Product[]) => {
   try {
     await Promise.all(products.map(async (product) => {
       const { error } = await deleteProduct(product)
-      
+
       if (error) throw error
-    }))    
+    }))
 
     return {
       success: 'Productos eliminados correctamente',

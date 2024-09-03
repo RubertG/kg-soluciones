@@ -1,9 +1,8 @@
 import { Timestamp } from "firebase/firestore"
 
-export interface Image {
+export interface Image extends File {
   id: string
-  url: string
-  size: number
+  url?: string
 }
 
 export interface Product {
