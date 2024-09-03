@@ -1,6 +1,13 @@
-import { CategoryForm, CategoryTable, Header } from "@/admin"
+import { CategoryForm, CategoryTable, EditForm, Header } from "@/admin"
+import { Popup } from "@/core"
 
-function CategoriesPage() {
+interface Props {
+  searchParams: { [key: string]: string | undefined }
+}
+
+function CategoriesPage({
+  searchParams: { editar: edit }
+}: Props) {
   return (
     <section className="py-7">
       <Header title="Categorías">
@@ -12,6 +19,13 @@ function CategoriesPage() {
         <CategoryForm />
         <CategoryTable />
       </div>
+      {
+        edit && (
+          <Popup>
+            <EditForm editId={edit} />
+          </Popup>
+        )
+      }
     </section>
   )
 }

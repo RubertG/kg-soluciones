@@ -53,7 +53,7 @@ const storeApi: StateCreator<CategoryTableState> = (set, get) => ({
   editCategory: (category) => {
     const categories = get().categories
     const newCategories = categories.map((c) => {
-      if (c.name === category.name) {
+      if (c.id === category.id) {
         return category
       }
 

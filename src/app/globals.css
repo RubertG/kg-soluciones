@@ -63,6 +63,19 @@ textarea {
 	}
 }
 
+.entry-animation-2 {
+	animation: entry-2 0.2s ease-out both;
+}
+
+@keyframes entry-2 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .custom-loader {
 	width: 40px;
 	height: 40px;
