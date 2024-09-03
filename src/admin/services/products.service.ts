@@ -2,6 +2,7 @@ import { db } from "@/core"
 import { type Product } from "@/core/types/db/db"
 import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc } from "firebase/firestore"
 import { getCategories } from "./categories.service"
+import { deleteFile } from "@/admin"
 
 const NAME_COLLECTION = 'products'
 
@@ -60,9 +61,12 @@ export const saveProduct = async (product: Product) => {
   }
 }
 
-export const deleteProduct = async (id: string) => {
+export const deleteProduct = async (product: Product) => {
   try {
-    await deleteDoc(doc(db, NAME_COLLECTION, id))
+    await Promise.all([
+      deleteDoc(doc(db, NAME_COLLECTION, product.id)),
+      Promise.all(product.images.map(image => deleteFile(image.url)))
+    ])
 
     return {
       message: 'Producto eliminado correctamente',
@@ -78,7 +82,29 @@ export const deleteProduct = async (id: string) => {
   }
 }
 
-// Eliminar imagenes que fueron eliminadas por el usuario
+export const deleteProducts = async (products: Product[]) => {
+  try {
+    await Promise.all(products.map(async (product) => {
+      const { error } = await deleteProduct(product)
+      
+      if (error) throw error
+    }))    
+
+    return {
+      success: 'Productos eliminados correctamente',
+      error: null
+    }
+  } catch (error) {
+    console.log(error)
+
+    return {
+      success: null,
+      error: 'Error al eliminar los proyectos'
+    }
+  }
+}
+
+// Eliminar imagenes que fueron eliminadas por el usuario y subir las nuevas
 export const updateProduct = async (product: Product) => {
   try {
     const docRef = doc(db, NAME_COLLECTION, product.id)
