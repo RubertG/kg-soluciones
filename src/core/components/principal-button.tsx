@@ -19,7 +19,6 @@ export const PrincipalButton = ({
 }
 
 interface PropsButton extends React.HtmlHTMLAttributes<HTMLButtonElement> {
-  className?: string
   children: React.ReactNode
 }
 
