@@ -99,9 +99,9 @@ export const updateCategory = async (category: Category) => {
 
 export const deleteCategories = async (categories: Category[]) => {
   try {
-    await Promise.all(categories.map(async (category) => {
-      const docRef = doc(db, NAME_COLLECTION, category.name)
-      await deleteDoc(docRef)
+    await Promise.all(categories.map((category) => {
+      const docRef = doc(db, NAME_COLLECTION, category.id)
+      deleteDoc(docRef)
     }))
 
     return {
