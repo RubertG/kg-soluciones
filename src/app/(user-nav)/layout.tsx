@@ -9,8 +9,12 @@ async function FirebaseLayout({
   return (
     <>
       <Nav />
-      {children}
-      <Footer />
+      <main className="grid grid-rows-2 min-h-[100dvh]">
+        <div className="row-span-full">
+          {children}
+        </div>
+        <Footer />
+      </main>
     </>
   )
 }
