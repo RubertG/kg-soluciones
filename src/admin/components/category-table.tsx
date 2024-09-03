@@ -4,6 +4,7 @@ import { Category } from "@/core/types/db/db"
 import DataTable, { TableColumn } from "react-data-table-component"
 import { customStyles, TableLoader, useCategoryTable } from "@/admin"
 import Link from "next/link"
+import { ConfirmPopup } from "@/core"
 
 interface Props {
   className?: string
@@ -14,7 +15,8 @@ export const CategoryTable = ({
 }: Props) => {
   const {
     categories, handleChange, handleDelete,
-    loading, loadingDelete, selectedCategories
+    loading, loadingDelete, selectedCategories,
+    confirmDelete, handlePopup
   } = useCategoryTable()
 
   const columns: TableColumn<Category>[] = [
@@ -70,7 +72,7 @@ export const CategoryTable = ({
         selectedCategories && selectedCategories.length > 0 && (
           <button
             className="text-red-100 bg-red-800/40 lg:hover:bg-red-800/60 lg:transition-colors backdrop-blur-sm border border-red-800 py-1.5 px-3.5 rounded-lg text-sm mt-3"
-            onClick={handleDelete}
+            onClick={handlePopup}
           >
             {
               loadingDelete ? (
@@ -80,6 +82,16 @@ export const CategoryTable = ({
               )
             }
           </button>
+        )
+      }
+      {
+        confirmDelete && (
+          <ConfirmPopup
+            actionAccept={handleDelete}
+            actionCancel={handlePopup}
+            title="¿Seguro que quieres eliminar estas categorías?"
+            description="Ten en cuenta que esta operación no puede deshacerse y las categorías serán eliminadas permanentemente"
+          />
         )
       }
     </aside>

@@ -16,6 +16,8 @@ export const useCategoryTable = () => {
   const selectedCategories = useCategoryTableStore(state => state.selectedCategories)
   const deleteCategoriesState = useCategoryTableStore(state => state.deleteCategories)
   const setLoadingDelete = useCategoryTableStore(state => state.setLoadingDelete)
+  const confirmDelete = useCategoryTableStore(state => state.confirmDelete)
+  const setConfirmDelete = useCategoryTableStore(state => state.setConfirmDelete)
 
   useEffect(() => {
     fetchCategories()
@@ -30,6 +32,7 @@ export const useCategoryTable = () => {
     if (!selectedCategories) return
 
     setLoadingDelete(true)
+    setConfirmDelete(false)
     const { error, success } = await deleteCategories(selectedCategories)
 
     if (error) {
@@ -46,12 +49,18 @@ export const useCategoryTable = () => {
     setSelectedCategories(selectedRows.selectedRows)
   }
 
+  const handlePopup = () => {
+    setConfirmDelete(!confirmDelete)
+  }
+
   return {
     loading,
     loadingDelete,
     categories,
+    confirmDelete,
     selectedCategories,
     handleDelete,
-    handleChange
+    handleChange,
+    handlePopup
   }
 }

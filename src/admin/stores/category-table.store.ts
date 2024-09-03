@@ -8,8 +8,10 @@ interface CategoryTableState {
   error?: string
   selectedCategories?: Category[]
   loadingDelete: boolean
+  confirmDelete: boolean
 
   setLoadingDelete: (loadingDelete: boolean) => void
+  setConfirmDelete: (confirmDelete: boolean) => void
   setSelectedCategories: (selectedCategories: Category[]) => void
   setError: (error: string | undefined) => void
   setLoading: (loading: boolean) => void
@@ -26,7 +28,9 @@ const storeApi: StateCreator<CategoryTableState> = (set, get) => ({
   loadingDelete: false,
   error: undefined,
   selectedCategories: undefined,
+  confirmDelete: false,
 
+  setConfirmDelete: (confirmDelete) => set({ confirmDelete }),
   setLoading: (loading) => set({ loading }),
   setLoadingDelete: (loadingDelete) => set({ loadingDelete }),
   setCategories: (categories) => set({ categories }),
