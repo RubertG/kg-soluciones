@@ -9,7 +9,7 @@ function ProductsLayout({
     <main className="py-7">
       <Header title="Productos">
         <p className="text-text-200 text-sm lg:text-base mt-3">
-          Administra todas las categorías de tu catálogo de productos. En esta sección, puedes crear, modificar y eliminar categorías de manera sencilla. Recuerda asignar un nombre breve a cada categoría, entre 3 y 20 caracteres, para facilitar su gestión y organización.
+          Administra todos los productos de tu catálogo. En esta sección, puedes añadir, editar y eliminar productos de manera eficiente. Asegúrate de proporcionar detalles claros y precisos para cada producto, incluyendo nombre, descripción, imagenes en formato <strong>4/3</strong> y precio, para mantener tu inventario bien organizado y actualizado. Te recomendamos subir las imagenes con extención webp y que cada una pese menos de 200 KB.
         </p>
       </Header>
       {children}
