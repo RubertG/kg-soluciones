@@ -13,7 +13,7 @@ export const ImgProductCard = ({
 }: Props) => {
   return (
     <li
-      className="flex gap-2 items-center lg:hover:bg-bg-200 lg:transition-colors pr-4 rounded-lg"
+      className="flex gap-2 items-center lg:hover:bg-bg-200 lg:transition-colors pr-4 rounded-lg overflow-hidden"
     >
       <Image
         src={img.url || ""}
