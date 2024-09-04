@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React, { DetailedHTMLProps, forwardRef, InputHTMLAttributes, LegacyRef } from 'react'
-import { Selector } from './icons'
+import { Selector, Upload } from '@/core'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   labelText?: string
@@ -101,4 +101,26 @@ export const SelectInput = forwardRef(
         </div>
       </label>
     )
-  })
+  }
+)
+
+export const FileInput = forwardRef(function FileInput({ className, multiple, ...props }: Props, ref: LegacyRef<HTMLInputElement> | undefined) {
+  return (
+    <button className={`block w-full ${className}`}>
+      <label
+        className={"relative w-full inline-flex items-center justify-center py-2.5 px-3.5 rounded-lg bg-bg-300 text-text-100 gap-2 text-center text-sm lg:text-base lg:hover:bg-primary-100 lg:transition-colors cursor-pointer"}
+        htmlFor="file"
+      >
+        <Upload className="absolute top-1/2 -translate-y-1/2 left-0 ml-3.5 stroke-text-100 w-6 h-6" />
+        Cargar {multiple ? "imágenes" : "imagen"}
+        <input
+          type="file"
+          id="file"
+          accept="image/*"
+          multiple={multiple}
+          className="hidden"
+          {...props} {...(ref == undefined) ? {} : { ref }} />
+      </label>
+    </button>
+  )
+})
