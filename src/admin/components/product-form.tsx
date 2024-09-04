@@ -1,8 +1,9 @@
 "use client"
 
 import { FormError, Input, PrincipalActionButton, TextArea, useForm } from "@/core"
-import { productSchema } from "@/admin"
+import { LIMIT_SIZE, productSchema, returnFileSize, useProductImagesFormStore } from "@/admin"
 import { CategorySelect } from "./category-select"
+import { toast } from "sonner"
 
 interface Props {
   className?: string
@@ -11,9 +12,22 @@ interface Props {
 export const ProductForm = ({
   className
 }: Props) => {
+  const images = useProductImagesFormStore(state => state.images)
+  const totalSize = useProductImagesFormStore(state => state.totalSize)
+
   const { errors, handleSubmit, loading, register } = useForm<ProductInputs>({
     schema: productSchema,
     actionSubmit: async (inputs) => {
+      if (images.length === 0) {
+        toast.error('Debe subir al menos una imagen')
+        return
+      }
+
+      if (totalSize() > LIMIT_SIZE) {
+        toast.error(`Las imagenes no pueden superar los ${returnFileSize(LIMIT_SIZE)}`)
+        return
+      }
+
       console.log(inputs)
     }
   })
@@ -23,7 +37,7 @@ export const ProductForm = ({
       onSubmit={handleSubmit}
       className={`w-full p-3 lg:p-5 lg:pt-4 border border-bg-200 rounded-lg bg-bg-card/30 ${className}`}
     >
-      <h2 className="text-xl lg:text-2xl font-bold text-text-100">
+      <h2 className="text-xl lg:text-2xl font-bold text-text-100 text-center">
         Crear producto
       </h2>
 
