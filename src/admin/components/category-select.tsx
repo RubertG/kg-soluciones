@@ -8,10 +8,11 @@ import { useEffect } from "react"
 interface Props {
   className?: string
   register: UseFormRegister<ProductInputs>
+  isValid: boolean
 }
 
 export const CategorySelect = ({
-  className, register
+  className, register, isValid
 }: Props) => {
   const categories = useCategoryTableStore(state => state.categories)
   const fetchCategories = useCategoryTableStore(state => state.fetchCategories)
@@ -28,6 +29,7 @@ export const CategorySelect = ({
       id="category"
       title="Selecciona su categoría"
       items={categories}
+      isValid={isValid}
       {...register('category')}
     />
   )

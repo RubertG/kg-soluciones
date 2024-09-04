@@ -32,6 +32,7 @@ export const ProductForm = ({
         id="name"
         labelText="Nombre del producto"
         placeholder="Batman pequeño impresion 3D"
+        isValid={errors.name?.message === undefined}
         {...register('name')}
       />
       {errors.name && <FormError>{errors.name.message}</FormError>}
@@ -41,6 +42,7 @@ export const ProductForm = ({
         labelText="Descripción del producto"
         id="description"
         placeholder="Descripción breve del producto. Puedes dar detalles como el tamaño, material, color, etc."
+        isValid={errors.description?.message === undefined}
         {...register('description')}
       />
       {errors.description && <FormError>{errors.description.message}</FormError>}
@@ -51,12 +53,14 @@ export const ProductForm = ({
         id="price"
         type="number"
         placeholder="20000"
+        isValid={errors.price?.message === undefined}
         {...register('price')}
       />
       {errors.price && <FormError>{errors.price.message}</FormError>}
 
       <CategorySelect
         className="mt-4"
+        isValid={errors.category?.message === undefined}
         register={register}
       />
       {errors.category && <FormError>{errors.category.message}</FormError>}
