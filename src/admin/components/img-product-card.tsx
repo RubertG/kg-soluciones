@@ -23,9 +23,9 @@ export const ImgProductCard = ({
         className="object-cover w-24 aspect-[4/3] rounded-lg"
       />
       <div className="w-full">
-        <p className="font-bold text-text-100 flex gap-2 items-center flex-wrap">
+        <p className="font-bold text-text-100 flex gap-1.5 items-center overflow-hidden text-ellipsis whitespace-nowrap">
           <span className="whitespace-nowrap">{returnFileSize(img.size)}</span>
-          <span className="text-sm font-normal text-text-300 overflow-hidden text-ellipsis whitespace-nowrap">
+          <span className="text-sm font-normal text-text-300">
             {img.name}
           </span>
         </p>
