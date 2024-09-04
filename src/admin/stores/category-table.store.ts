@@ -67,6 +67,9 @@ const storeApi: StateCreator<CategoryTableState> = (set, get) => ({
   },
 
   fetchCategories: async () => {
+    if (get().categories.length > 0) return
+
+    get().setLoading(true)
     const { categories, error } = await getCategories()
 
     if (error) {
