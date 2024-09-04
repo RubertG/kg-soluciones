@@ -1,7 +1,8 @@
 "use client"
 
-import { FormError, Input, PrincipalActionButton, SelectInput, TextArea, useForm } from "@/core"
+import { FormError, Input, PrincipalActionButton, TextArea, useForm } from "@/core"
 import { productSchema } from "@/admin"
+import { CategorySelect } from "./category-select"
 
 interface Props {
   className?: string
@@ -54,17 +55,9 @@ export const ProductForm = ({
       />
       {errors.price && <FormError>{errors.price.message}</FormError>}
 
-      <SelectInput
+      <CategorySelect
         className="mt-4"
-        labelText="Categoría del producto"
-        id="category"
-        title="Selecciona su categoría"
-        items={[
-          { id: '1', name: 'Categoría 1' },
-          { id: '2', name: 'Categoría 2' },
-          { id: '3', name: 'Categoría 3' }
-        ]}
-        {...register('category')}
+        register={register}
       />
       {errors.category && <FormError>{errors.category.message}</FormError>}
 
