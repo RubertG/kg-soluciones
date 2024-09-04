@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore"
 
 export interface Image extends File {
-  id: string
+  id?: string
   url?: string
 }
 
