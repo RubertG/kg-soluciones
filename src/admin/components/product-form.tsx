@@ -45,7 +45,7 @@ export const ProductForm = ({
         className="mt-5"
         id="name"
         labelText="Nombre del producto"
-        placeholder="Batman pequeño impresion 3D"
+        placeholder="Batman pequeño de 30 cm"
         isValid={errors.name?.message === undefined}
         {...register('name')}
       />
