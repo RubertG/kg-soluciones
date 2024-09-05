@@ -17,13 +17,18 @@ export const ProductImagesForm = ({
   const addImages = useProductImagesFormStore(state => state.addImages)
   const deleteImage = useProductImagesFormStore(state => state.deleteImage)
   const totalSize = useProductImagesFormStore(state => state.totalSize)
+  const setInitialImages = useProductImagesFormStore(state => state.setInitialImages)
 
   useEffect(() => {
     if (initialImages) {
-      addImages(initialImages)
+      setInitialImages(initialImages)
+      setImages(initialImages)
     }
 
-    return () => setImages([])
+    return () => {
+      setImages([])
+      if (initialImages) setInitialImages([])
+    }
   }, [])
 
   const handleUploadImages = async (e: ChangeEvent<HTMLInputElement>) => {
