@@ -2,32 +2,42 @@
 
 import { FileInput } from "@/core"
 import { ImgProductCard, returnFileSize, useProductImagesFormStore } from "@/admin"
-import { ChangeEvent } from "react"
+import { ChangeEvent, useEffect } from "react"
 import { Image as ImageType } from "@/core/types/db/db"
 
-export const ProductImagesForm = () => {
+interface Props {
+  initialImages?: ImageType[]
+}
+
+export const ProductImagesForm = ({
+  initialImages
+}: Props) => {
   const images = useProductImagesFormStore(state => state.images)
+  const setImages = useProductImagesFormStore(state => state.setImages)
   const addImages = useProductImagesFormStore(state => state.addImages)
   const deleteImage = useProductImagesFormStore(state => state.deleteImage)
   const totalSize = useProductImagesFormStore(state => state.totalSize)
 
-  const handleUploadImages = (e: ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    if (initialImages) {
+      addImages(initialImages)
+    }
+
+    return () => setImages([])
+  }, [])
+
+  const handleUploadImages = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
 
     if (!files) return
 
-    const images: ImageType[] = Object.values(files).map(file => ({
-      name: file.name,
-      size: file.size,
-      type: file.type,
-      lastModified: file.lastModified,
-      webkitRelativePath: file.webkitRelativePath,
-      arrayBuffer: file.arrayBuffer,
-      slice: file.slice,
-      stream: file.stream,
-      text: file.text,
-      url: URL.createObjectURL(file)
-    }))
+    const images: ImageType[] = Object.values(files).map(file => {
+      const newFile = new File([file], file.name, { type: file.type }) as ImageType
+
+      newFile.url = URL.createObjectURL(file)
+
+      return newFile
+    })
     addImages(images)
   }
 

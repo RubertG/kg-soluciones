@@ -25,7 +25,7 @@ export const ProductForm = ({
       className={`w-full p-3 lg:p-5 lg:pt-4 border border-bg-200 rounded-lg bg-bg-card/30 ${className}`}
     >
       <h2 className="text-xl lg:text-2xl font-bold text-text-100 text-center">
-        Crear producto
+        {defaultValues ? 'Editar producto' : 'Crear producto'}
       </h2>
 
       <Input

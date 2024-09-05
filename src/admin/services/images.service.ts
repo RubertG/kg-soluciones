@@ -6,7 +6,7 @@ export const saveImages = async (images: Image[], nameCollection: string) => {
   const imgs = await Promise.all(
     images.map(async (image): Promise<ProductImage | null> => {
       try {
-        const img = await saveFile(image, nameCollection)
+        const imgUrl = await saveFile(image, `/${nameCollection}`)
         return {
           name: image.name,
           size: image.size,
@@ -14,7 +14,7 @@ export const saveImages = async (images: Image[], nameCollection: string) => {
           lastModified: image.lastModified,
           webkitRelativePath: image.webkitRelativePath,
           id: uuid(),
-          url: img
+          url: imgUrl
         }
       } catch (error) {
         console.error("Error guardando la imagen: ", error)

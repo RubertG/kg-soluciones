@@ -122,15 +122,15 @@ export const updateProduct = async (product: Product) => {
     await updateDoc(docRef, { ...product })
 
     return {
-      message: 'Producto actualizado correctamente',
-      error: false
+      success: 'Producto actualizado correctamente',
+      error: null
     }
   } catch (error) {
     console.log(error)
 
     return {
-      message: 'Error al actualizar el proyecto',
-      error: true
+      error: 'Error al actualizar el proyecto',
+      success: null
     }
   }
 }
