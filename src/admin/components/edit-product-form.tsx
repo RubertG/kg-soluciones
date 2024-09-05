@@ -5,20 +5,21 @@ import { LIMIT_SIZE, ProductForm, returnFileSize, updateProduct, useProductImage
 import { useRouter } from "next/navigation"
 import { Timestamp } from "firebase/firestore"
 import { Product } from "@/core/types/db/db"
-import { v4 as uuid } from "uuid"
 import { useEffect } from "react"
 
 interface Props {
   className?: string
   product: ProductInputs
+  id: string
 }
 
 export const EditProductForm = ({
-  className, product
+  className, product, id
 }: Props) => {
   const images = useProductImagesFormStore(state => state.images)
   const totalSize = useProductImagesFormStore(state => state.totalSize)
   const setImages = useProductImagesFormStore(state => state.setImages)
+  const initialImages = useProductImagesFormStore(state => state.initialImages)
   const router = useRouter()
 
   useEffect(() => {
@@ -41,11 +42,11 @@ export const EditProductForm = ({
     const newProduct: Product = {
       ...inputs,
       price: parseInt(inputs.price),
-      id: uuid(),
+      id,
       images: images,
       createAt: Timestamp.now()
     }
-    const { error, success } = await updateProduct(newProduct)
+    const { error, success } = await updateProduct(newProduct, initialImages)
 
     if (error) {
       toast.error(error)
