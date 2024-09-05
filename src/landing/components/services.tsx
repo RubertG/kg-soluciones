@@ -4,7 +4,7 @@ import Image from "next/image"
 const services = [
   {
     description: "Servicio de diseño, modelado e impresión 3d, te fabricamos tu pieza plástica",
-    image: "/assets/3d-printing.svg"
+    image: "/assets/machine.svg"
   },
   {
     description: "Fabricación, reparación o mantenimiento de sistemas de alarma vehicular y hogar",
@@ -22,7 +22,7 @@ const services = [
   },
   {
     description: "Diseño, construcción y mantenimiento de sistemas automatizados",
-    image: "/assets/machine.svg"
+    image: "/assets/3d-printing.svg"
   },
   {
     description: "Servicios técnicos de tarjetas electrónicas y electricidad automotriz",
