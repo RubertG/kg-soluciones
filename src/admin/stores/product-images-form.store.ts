@@ -26,10 +26,7 @@ const storeApi: StateCreator<ImagesStore> = (set, get) => ({
   },
   addImages: (images) => set({ images: [...get().images, ...images] }),
   totalSize: () => {
-    const images = get().images.reduce((acc, image) => acc + image.size, 0)
-    const initialImages = get().initialImages.reduce((acc, image) => acc + image.size, 0)
-
-    return images + initialImages
+    return get().images.reduce((acc, image) => acc + image.size, 0) 
   }  
 })
 

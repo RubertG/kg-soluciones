@@ -27,6 +27,7 @@ export const ProductImagesForm = ({
 
     return () => {
       setImages([])
+      
       if (initialImages) setInitialImages([])
     }
   }, [])
