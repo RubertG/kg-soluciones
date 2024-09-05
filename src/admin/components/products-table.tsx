@@ -2,10 +2,8 @@
 
 import { Product } from "@/core/types/db/db"
 import DataTable, { TableColumn } from "react-data-table-component"
-import { customStyles, deleteProducts, TableLoader, useProductsTableStore } from "@/admin"
+import { customStyles, TableLoader, useProductsTable } from "@/admin"
 import Link from "next/link"
-import { useEffect } from "react"
-import { toast } from "sonner"
 import { ConfirmPopup } from "@/core"
 
 interface Props {
@@ -15,30 +13,11 @@ interface Props {
 export const ProductsTable = ({
   className
 }: Props) => {
-  const products = useProductsTableStore(state => state.products)
-  const loading = useProductsTableStore(state => state.loading)
-  const selectedProducts = useProductsTableStore(state => state.selectedProducts)
-  const fetchProducts = useProductsTableStore(state => state.fetchProducts)
-  const error = useProductsTableStore(state => state.error)
-  const loadingDelete = useProductsTableStore(state => state.loadingDelete)
-  const confirmDelete = useProductsTableStore(state => state.confirmDelete)
-  const setConfirmDelete = useProductsTableStore(state => state.setConfirmDelete)
-  const setSelectedProducts = useProductsTableStore(state => state.setSelectedProducts)
-  const setLoadingDelete = useProductsTableStore(state => state.setLoadingDelete)
-  const deleteProductsState = useProductsTableStore(state => state.deleteProducts)
-
-  useEffect(() => {
-    fetchProducts()
-  }, [])
-
-  useEffect(() => {
-    if (!error) return
-    toast.error(error)
-  }, [error])
-
-  const handlePopup = () => {
-    setConfirmDelete(!confirmDelete)
-  }
+  const {
+    products, handleChange, selectedProducts,
+    confirmDelete, loading, loadingDelete,
+    handleDelete, handlePopup
+  } = useProductsTable()
 
   const columns: TableColumn<Product>[] = [
     {
@@ -81,27 +60,6 @@ export const ProductsTable = ({
       button: true
     }
   ]
-
-  const handleChange = (selectedRows: { allSelected: boolean; selectedCount: number; selectedRows: Product[]; }) => {
-    setSelectedProducts(selectedRows.selectedRows)
-  }
-
-  const handleDelete = async () => {
-    if (!selectedProducts) return
-
-    setLoadingDelete(true)
-    setConfirmDelete(false)
-    const { error, success } = await deleteProducts(selectedProducts)
-
-    if (error) {
-      toast.error(error)
-    } else {
-      toast.success(success)
-      deleteProductsState()
-    }
-
-    setLoadingDelete(false)
-  }
 
   return (
     <aside className={`rounded-lg bg-bg-card/40 p-3.5 border border-bg-200 w-full max-w-7xl ${className}`}>
