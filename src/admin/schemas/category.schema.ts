@@ -6,7 +6,7 @@ export const categorySchema = z.object({
     .min(3, {
       message: "El nombre debe tener al menos 3 caracteres"
     })
-    .max(20, {
-      message: "El nombre debe tener como máximo 20 caracteres"
+    .max(50, {
+      message: "El nombre debe tener como máximo 50 caracteres"
     })
 })
