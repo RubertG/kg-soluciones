@@ -5,7 +5,7 @@ interface ImagesStore {
   images: Image[]
   initialImages: Image[]
   setImages: (images: Image[]) => void
-  setImagesInitial: (images: Image[]) => void
+  setInitialImages: (images: Image[]) => void
 
   addImages: (images: Image[]) => void
   deleteImage: (image: Image) => void
@@ -17,7 +17,7 @@ const storeApi: StateCreator<ImagesStore> = (set, get) => ({
   initialImages: [],
 
   setImages: (images) => set({ images }),
-  setImagesInitial: (images) => set({ initialImages: images }),
+  setInitialImages: (images) => set({ initialImages: images }),
 
   deleteImage: (image) => {
     const images = get().images

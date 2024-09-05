@@ -27,12 +27,15 @@ async function EditProductPage({
 
   return (
     <section className="grid grid-cols-1 lg:grid-cols-[55%_auto] gap-6 items-start max-w-7xl">
-      <EditProductForm product={{
-        category: product.category,
-        description: product.description,
-        name: product.name,
-        price: product.price.toString()
-      }} />
+      <EditProductForm
+        id={product.id}
+        product={{
+          category: product.category,
+          description: product.description,
+          name: product.name,
+          price: product.price.toString()
+        }}
+      />
       <ProductImagesForm initialImages={product.images} />
     </section>
   )
