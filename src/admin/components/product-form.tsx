@@ -1,35 +1,22 @@
 "use client"
 
 import { FormError, Input, PrincipalActionButton, TextArea, useForm } from "@/core"
-import { LIMIT_SIZE, productSchema, returnFileSize, useProductImagesFormStore } from "@/admin"
+import { productSchema } from "@/admin"
 import { CategorySelect } from "./category-select"
-import { toast } from "sonner"
 
 interface Props {
   className?: string
+  defaultValues?: ProductInputs
+  onSubmit: (inputs: ProductInputs) => Promise<void>
 }
 
 export const ProductForm = ({
-  className
+  className, defaultValues, onSubmit
 }: Props) => {
-  const images = useProductImagesFormStore(state => state.images)
-  const totalSize = useProductImagesFormStore(state => state.totalSize)
-
   const { errors, handleSubmit, loading, register } = useForm<ProductInputs>({
     schema: productSchema,
-    actionSubmit: async (inputs) => {
-      if (images.length === 0) {
-        toast.error('Debe subir al menos una imagen')
-        return
-      }
-
-      if (totalSize() > LIMIT_SIZE) {
-        toast.error(`Las imagenes no pueden superar los ${returnFileSize(LIMIT_SIZE)}`)
-        return
-      }
-
-      console.log(inputs)
-    }
+    values: defaultValues,
+    actionSubmit: onSubmit
   })
 
   return (
@@ -80,7 +67,13 @@ export const ProductForm = ({
       {errors.category && <FormError>{errors.category.message}</FormError>}
 
       <PrincipalActionButton className="mt-5">
-        {loading ? 'Creando producto...' : 'Crear producto'}
+        {
+          loading ? (
+            <p>{defaultValues ? 'Actualizando producto...' : 'Creando producto...'}</p>
+          ) : (
+            <p>{defaultValues ? 'Actualizar producto' : 'Crear producto'}</p>
+          )
+        }
       </PrincipalActionButton>
     </form>
   )
