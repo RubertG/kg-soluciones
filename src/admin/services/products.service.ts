@@ -2,7 +2,7 @@ import { db } from "@/core"
 import { type Product } from "@/core/types/db/db"
 import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc } from "firebase/firestore"
 import { getCategories } from "./categories.service"
-import { deleteFile, saveFile } from "@/admin"
+import { deleteFile, saveImages } from "@/admin"
 
 const NAME_COLLECTION = 'products'
 
@@ -44,31 +44,24 @@ export const getProducts = async () => {
 
 export const saveProduct = async (product: Product) => {
   try {
-    const images = await Promise.all(product.images.map(async (image) => {
-      const img = await saveFile(image, NAME_COLLECTION)
-
-      return {
-        ...image,
-        url: img
-      }
-    }))
+    const images = await saveImages(product.images, NAME_COLLECTION)
 
     const docRef = doc(db, NAME_COLLECTION, product.id)
     await setDoc(docRef, {
       ...product,
-      images: images
+      images
     })
 
     return {
-      message: 'Producto creado correctamente',
-      error: false
+      success: 'Producto creado correctamente',
+      error: null
     }
   } catch (error) {
     console.log(error)
 
     return {
-      message: 'Error al crear el producto',
-      error: true
+      error: 'Error al crear el producto',
+      success: null
     }
   }
 }
@@ -85,15 +78,15 @@ export const deleteProduct = async (product: Product) => {
     ])
 
     return {
-      message: 'Producto eliminado correctamente',
-      error: false
+      success: 'Producto eliminado correctamente',
+      error: null
     }
   } catch (error) {
     console.log(error)
 
     return {
-      message: 'Error al eliminar el producto',
-      error: true
+      error: 'Error al eliminar el producto',
+      success: null
     }
   }
 }
