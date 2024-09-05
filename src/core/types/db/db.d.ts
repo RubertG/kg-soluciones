@@ -12,7 +12,7 @@ export interface Product {
   category: string
   name: string
   description: string
-  price: number
+  price?: number
   images: Image[]
   createAt: Timestamp
 }

@@ -32,7 +32,7 @@ export const ProductForm = ({
         className="mt-5"
         id="name"
         labelText="Nombre del producto"
-        placeholder="Batman pequeño de 30 cm"
+        placeholder="Ej: Batman pequeño de 30 cm"
         isValid={errors.name?.message === undefined}
         {...register('name')}
       />
@@ -42,7 +42,7 @@ export const ProductForm = ({
         className="mt-4"
         labelText="Descripción del producto"
         id="description"
-        placeholder="Descripción breve del producto. Puedes dar detalles como el tamaño, material, color, etc."
+        placeholder="Ej: Descripción breve del producto. Puedes dar detalles como el tamaño, material, color, etc."
         isValid={errors.description?.message === undefined}
         {...register('description')}
       />
@@ -53,7 +53,8 @@ export const ProductForm = ({
         labelText="Precio del producto"
         id="price"
         type="number"
-        placeholder="20000"
+        placeholder={defaultValues && !defaultValues.price ? "Sin precio" : "Ej: 20000"}
+        isObligatory={false}
         isValid={errors.price?.message === undefined}
         {...register('price')}
       />

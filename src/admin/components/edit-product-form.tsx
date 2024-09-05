@@ -41,7 +41,7 @@ export const EditProductForm = ({
 
     const newProduct: Product = {
       ...inputs,
-      price: parseInt(inputs.price),
+      price: inputs.price ? parseInt(inputs.price) : undefined,
       id,
       images: images,
       createAt: Timestamp.now()

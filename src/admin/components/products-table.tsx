@@ -32,7 +32,7 @@ export const ProductsTable = ({
     },
     {
       name: "Precio",
-      selector: (row) => row.price,
+      selector: (row) => row.price ? `$${row.price}` : "Sin precio",
       sortable: true
     },
     {

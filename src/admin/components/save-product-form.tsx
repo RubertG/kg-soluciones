@@ -39,7 +39,7 @@ export const SaveProductForm = ({
 
     const newProduct: Product = {
       ...inputs,
-      price: parseInt(inputs.price),
+      price: inputs.price ? parseInt(inputs.price) : undefined,
       id: uuid(),
       images: images,
       createAt: Timestamp.now()

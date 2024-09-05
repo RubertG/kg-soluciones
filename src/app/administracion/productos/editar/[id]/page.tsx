@@ -1,6 +1,9 @@
 import { EditProductForm, ProductImagesForm } from "@/admin"
 import { getProduct, PrincipalButton } from "@/core"
 
+export const revalidate = 0
+export const dynamic = "force-dynamic"
+
 interface Props {
   params: {
     id: string
@@ -33,7 +36,7 @@ async function EditProductPage({
           category: product.category,
           description: product.description,
           name: product.name,
-          price: product.price.toString()
+          price: product.price ? product.price.toString() : undefined
         }}
       />
       <ProductImagesForm initialImages={product.images} />

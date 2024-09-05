@@ -16,14 +16,13 @@ export const productSchema = z.object({
     }),
   price: z
     .string()
-    .min(1, {
-      message: "El precio debe ser mayor a 0"
-    })
     .refine((value) => {
+      if (!value || value === "") return true
       return parseInt(value) > 0
     }, {
       message: "El precio debe ser mayor a 0"
-    }),
+    })
+    .optional(),
   category: z
     .string()
     .min(1, {

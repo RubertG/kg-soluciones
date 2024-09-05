@@ -26,7 +26,7 @@ export const Input = forwardRef(function Input({
       }
       <input
         className={
-          clsx("border border-bg-200 bg-bg-card/30 rounded-lg px-3.5 py-2.5 w-full focus:outline-none focus:border-primary-100 transition-colors text-text-200 placeholder:text-text-300 text-sm", {
+          clsx("border border-bg-200 bg-bg-card/30 rounded-lg px-3.5 py-2.5 w-full focus:outline-none focus:border-primary-100 transition-colors text-text-100 placeholder:text-text-300 text-sm", {
             "focus:border-primary-100": isValid,
             "focus:border-red-500": !isValid
           })
@@ -72,7 +72,7 @@ export const SelectInput = forwardRef(
         <div className="relative cursor-pointer">
           <select
             className={
-              clsx("border border-bg-200 bg-bg-card/30 rounded-lg px-3.5 py-2.5 w-full focus:outline-none focus:border-primary-100 transition-colors text-text-200 placeholder:text-text-300 text-sm cursor-pointer", {
+              clsx("border border-bg-200 bg-bg-card/30 rounded-lg px-3.5 py-2.5 w-full focus:outline-none focus:border-primary-100 transition-colors text-text-100 placeholder:text-text-300 text-sm cursor-pointer", {
                 "focus:border-primary-100": isValid,
                 "focus:border-red-500": !isValid
               })

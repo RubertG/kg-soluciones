@@ -47,7 +47,8 @@ export const saveProduct = async (product: Product) => {
     const images = await saveImages(product.images, NAME_COLLECTION)
     const newProduct = {
       ...product,
-      images
+      images,
+      price: product.price ? product.price : null
     }
     console.log(newProduct)
 
@@ -143,7 +144,8 @@ export const updateProduct = async (product: Product, initialImages: Image[]) =>
     const filteredImages = imagesOld.filter(img => img !== null)
     const newProduct = {
       ...product,
-      images: [...filteredImages, ...newImages]
+      images: [...filteredImages, ...newImages],
+      price: product.price ? product.price : null
     }
 
     const docRef = doc(db, NAME_COLLECTION, product.id)
