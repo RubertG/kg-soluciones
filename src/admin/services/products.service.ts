@@ -1,5 +1,5 @@
 import { db } from "@/core"
-import { type Product } from "@/core/types/db/db"
+import { Image, type Product } from "@/core/types/db/db"
 import { collection, deleteDoc, doc, getDocs, orderBy, query, setDoc, updateDoc } from "firebase/firestore"
 import { getCategories } from "./categories.service"
 import { deleteFile, saveImages } from "@/admin"
@@ -115,11 +115,39 @@ export const deleteProducts = async (products: Product[]) => {
   }
 }
 
-// Eliminar imagenes que fueron eliminadas por el usuario y subir las nuevas
-export const updateProduct = async (product: Product) => {
+export const updateProduct = async (product: Product, initialImages: Image[]) => {
   try {
+    const productImagesSet = new Set(product.images.map(img => img.url))
+
+    const newImagesSave = product.images.filter(img => img.url?.startsWith("blob"))
+
+    const [newImages, imagesOld] = await Promise.all([
+      await saveImages(newImagesSave, NAME_COLLECTION),
+      Promise.all(
+        initialImages.map(async (img) => {
+          try {
+            if (productImagesSet.has(img.url)) return img
+
+            await deleteFile(img.url || '')
+
+            return null
+          } catch (error) {
+            console.error("Error eliminando la imagen:", error)
+
+            return img
+          }
+        })
+      )
+    ])
+
+    const filteredImages = imagesOld.filter(img => img !== null)
+    const newProduct = {
+      ...product,
+      images: [...filteredImages, ...newImages]
+    }
+
     const docRef = doc(db, NAME_COLLECTION, product.id)
-    await updateDoc(docRef, { ...product })
+    await updateDoc(docRef, { ...newProduct })
 
     return {
       success: 'Producto actualizado correctamente',
@@ -129,7 +157,7 @@ export const updateProduct = async (product: Product) => {
     console.log(error)
 
     return {
-      error: 'Error al actualizar el proyecto',
+      error: 'Error al actualizar el producto',
       success: null
     }
   }
