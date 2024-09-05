@@ -1,6 +1,6 @@
 import { db } from "@/core"
 import { type Product } from "@/core/types/db/db"
-import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs, orderBy, query, setDoc, updateDoc } from "firebase/firestore"
 import { getCategories } from "./categories.service"
 import { deleteFile, saveImages } from "@/admin"
 
@@ -8,7 +8,7 @@ const NAME_COLLECTION = 'products'
 
 export const getProducts = async () => {
   try {
-    const q = query(collection(db, NAME_COLLECTION))
+    const q = query(collection(db, NAME_COLLECTION), orderBy('createAt', 'desc'))
     const [data, { categories, error: errorCategories }] = await Promise.all([
       await getDocs(q),
       await getCategories()
