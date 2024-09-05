@@ -66,7 +66,7 @@ export const ProductForm = ({
       />
       {errors.category && <FormError>{errors.category.message}</FormError>}
 
-      <PrincipalActionButton className="mt-5">
+      <PrincipalActionButton className="mt-5 w-full">
         {
           loading ? (
             <p>{defaultValues ? 'Actualizando producto...' : 'Creando producto...'}</p>
