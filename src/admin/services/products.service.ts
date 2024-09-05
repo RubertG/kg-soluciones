@@ -45,12 +45,14 @@ export const getProducts = async () => {
 export const saveProduct = async (product: Product) => {
   try {
     const images = await saveImages(product.images, NAME_COLLECTION)
-
-    const docRef = doc(db, NAME_COLLECTION, product.id)
-    await setDoc(docRef, {
+    const newProduct = {
       ...product,
       images
-    })
+    }
+    console.log(newProduct)
+
+    const docRef = doc(db, NAME_COLLECTION, newProduct.id)
+    await setDoc(docRef, newProduct)
 
     return {
       success: 'Producto creado correctamente',

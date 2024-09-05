@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { Timestamp } from "firebase/firestore"
 import { Product } from "@/core/types/db/db"
 import { v4 as uuid } from "uuid"
+import { useEffect } from "react"
 
 interface Props {
   className?: string
@@ -16,7 +17,14 @@ export const SaveProductForm = ({
 }: Props) => {
   const images = useProductImagesFormStore(state => state.images)
   const totalSize = useProductImagesFormStore(state => state.totalSize)
+  const setImages = useProductImagesFormStore(state => state.setImages)
   const router = useRouter()
+
+  useEffect(() => {
+    setImages([])
+
+    return () => setImages([])
+  }, [])
 
   const onSubmit = async (inputs: ProductInputs) => {
     if (images.length === 0) {

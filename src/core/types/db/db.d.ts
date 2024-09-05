@@ -5,6 +5,8 @@ export interface Image extends File {
   url?: string
 }
 
+export interface ProductImage extends Omit<File, "arrayBuffer" | "slice" | "stream" | "text">, Partial<Image> { }
+
 export interface Product {
   id: string
   category: string
