@@ -24,6 +24,8 @@ export const ProductsTable = ({
   const confirmDelete = useProductsTableStore(state => state.confirmDelete)
   const setConfirmDelete = useProductsTableStore(state => state.setConfirmDelete)
   const setSelectedProducts = useProductsTableStore(state => state.setSelectedProducts)
+  const setLoadingDelete = useProductsTableStore(state => state.setLoadingDelete)
+  const deleteProductsState = useProductsTableStore(state => state.deleteProducts)
 
   useEffect(() => {
     fetchProducts()
@@ -87,15 +89,18 @@ export const ProductsTable = ({
   const handleDelete = async () => {
     if (!selectedProducts) return
 
+    setLoadingDelete(true)
     setConfirmDelete(false)
     const { error, success } = await deleteProducts(selectedProducts)
 
     if (error) {
       toast.error(error)
-      return
+    } else {
+      toast.success(success)
+      deleteProductsState()
     }
 
-    toast.success(success)
+    setLoadingDelete(false)
   }
 
   return (
@@ -142,8 +147,8 @@ export const ProductsTable = ({
           <ConfirmPopup
             actionAccept={handleDelete}
             actionCancel={handlePopup}
-            title="¿Seguro que quieres eliminar estos productos?"
-            description="Ten en cuenta que esta operación no puede deshacerse y los productos junto con sus imágenes serán eliminadas permanentemente"
+            title="¿Estás seguro?"
+            description="Ten en cuenta que esta operación no puede deshacerse y los productos junto con sus imágenes serán eliminados permanentemente"
           />
         )
       }
