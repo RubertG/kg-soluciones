@@ -9,7 +9,7 @@ interface Props {
   editId: string
 }
 
-export const EditForm = ({
+export const EditCategoryForm = ({
   className, editId
 }: Props) => {
   const categories = useCategoryTableStore(state => state.categories)

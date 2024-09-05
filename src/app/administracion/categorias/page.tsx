@@ -1,4 +1,4 @@
-import { CategoryForm, CategoryTable, EditForm, Header } from "@/admin"
+import { CategoryForm, CategoryTable, EditCategoryForm, Header } from "@/admin"
 import { Popup } from "@/core"
 
 interface Props {
@@ -22,7 +22,7 @@ function CategoriesPage({
       {
         edit && (
           <Popup>
-            <EditForm editId={edit} />
+            <EditCategoryForm editId={edit} />
           </Popup>
         )
       }
