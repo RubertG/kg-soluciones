@@ -1,14 +1,18 @@
-import { Image } from "@/core/types/db/db"
+import { Image, ProductImage } from "@/core/types/db/db"
 import { saveFile } from "../utils/firebase-storage"
 import { v4 as uuid } from "uuid"
 
 export const saveImages = async (images: Image[], nameCollection: string) => {
   const imgs = await Promise.all(
-    images.map(async (image) => {
+    images.map(async (image): Promise<ProductImage | null> => {
       try {
         const img = await saveFile(image, nameCollection)
         return {
-          ...image,
+          name: image.name,
+          size: image.size,
+          type: image.type,
+          lastModified: image.lastModified,
+          webkitRelativePath: image.webkitRelativePath,
           id: uuid(),
           url: img
         }
