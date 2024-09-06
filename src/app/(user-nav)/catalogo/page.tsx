@@ -8,7 +8,7 @@ function CatalogPage({
   searchParams
 }: Props) {
   return (
-    <section className="max-w-6xl mx-auto px-4 xl:px-0">
+    <section>
       <header className="mt-20 flex flex-col items-center justify-center gap-4">
         <Searcher searchParams={searchParams} />
         <Categories />
