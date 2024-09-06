@@ -4,7 +4,7 @@ interface Props {
   className?: string
 }
 
-const Contact = ({
+export const Contact = ({
   className
 }: Props) => {
   return (
@@ -25,5 +25,3 @@ const Contact = ({
     </section>
   )
 }
-
-export default Contact

@@ -1,5 +1,5 @@
 import { Header, Services } from "@/landing"
-import Contact from "@/landing/components/contact"
+import { Contact } from "@/landing/components/contact"
 
 function Page() {
   return (
