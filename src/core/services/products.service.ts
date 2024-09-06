@@ -1,11 +1,13 @@
-import { collection, doc, getDoc, getDocs, limit, query, startAfter } from "firebase/firestore"
-import { LIMIT_PRODUCTS } from "@/core"
+import { collection, doc, getDoc, getDocs, orderBy, query } from "firebase/firestore"
 import { db } from "@/core"
 import { Product } from "../types/db/db"
 
-export const getProducts = async (start: number, limitProducts: number = LIMIT_PRODUCTS) => {
+const NAME_COLLECTION = 'products'
+
+// Traer por categoria
+export const getProducts = async () => {
   try {
-    const q = query(collection(db, 'products'), limit(limitProducts), startAfter(start))
+    const q = query(collection(db, NAME_COLLECTION), orderBy('createAt', 'desc'))
     const data = await getDocs(q)
     const products: Product[] = []
 
@@ -13,26 +15,15 @@ export const getProducts = async (start: number, limitProducts: number = LIMIT_P
       products.push(doc.data() as Product)
     })
 
-    if (products.length === 0) return {
-      hasNext: false,
-      products,
-      lastProduct: null,
-      error: null
-    }
-
     return {
-      hasNext: data.docs.length === limitProducts,
       products,
-      lastProduct: products[products.length - 1],
       error: null
     }
   } catch (error) {
     console.log(error)
 
     return {
-      hasNext: false,
       products: [],
-      lastProduct: null,
       error: 'Error al obtener productos'
     }
   }
