@@ -37,8 +37,8 @@ export const Searcher = ({
         autoComplete="off"
         defaultValue={searchParams.nombre}
       />
-      <button>
-        <SearchIcon className="stroke-text-200" />
+      <button className="group">
+        <SearchIcon className="stroke-text-200 group-hover:lg:stroke-primary-100 lg:transition-colors" />
       </button>
     </form>
   )
