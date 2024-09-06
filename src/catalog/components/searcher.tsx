@@ -2,6 +2,7 @@
 
 import { SearchIcon } from "@/core"
 import { useRouter } from "next/navigation"
+import { useEffect, useRef } from "react"
 
 interface Props {
   searchParams: { [key: string]: string | undefined }
@@ -11,6 +12,7 @@ export const Searcher = ({
   searchParams
 }: Props) => {
   const router = useRouter()
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -24,8 +26,13 @@ export const Searcher = ({
     router.push(`/catalogo?${newUrl.toString()}`)
   }
 
+  useEffect(() => {
+    formRef.current?.reset()
+  }, [searchParams.categoria])
+
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       className="w-full flex justify-center items-center gap-3 border border-bg-200 bg-bg-card/30 rounded-lg transition-colors text-text-100 placeholder:text-text-300 text-sm max-w-xl pr-2.5"
     >
