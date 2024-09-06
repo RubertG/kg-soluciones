@@ -37,7 +37,7 @@ function CatalogPage({
         <Searcher searchParams={searchParams} />
         <Categories />
       </header>
-      <ProductsContainer searchParams={searchParams} className="mt-12" />
+      <ProductsContainer searchParams={searchParams} className="mt-7 lg:mt-12" />
     </>
   )
 }
