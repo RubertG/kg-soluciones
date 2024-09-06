@@ -1,3 +1,7 @@
 export * from "./components/searcher"
 export * from "./components/categories"
 export * from "./components/category"
+export * from "./components/product-card"
+export * from "./components/products-container"
+export * from "./stores/products.store"
+export * from "./components/product-card-skeleton"
