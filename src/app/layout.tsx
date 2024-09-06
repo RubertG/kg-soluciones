@@ -3,6 +3,7 @@ import "./globals.css"
 import { defaultUrl, poppins } from "@/core"
 import { Toaster } from "sonner"
 import { SkeletonTheme } from "react-loading-skeleton"
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
@@ -37,7 +38,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo.webp" />
       </head>
       <body className={`${poppins.className} bg-bg-100 antialiased overflow-x-hidden`}>
-        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <SkeletonTheme baseColor="#131c2b" highlightColor="#2b3545">
           {children}
           <Toaster
             richColors
