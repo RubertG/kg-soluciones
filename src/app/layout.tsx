@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { defaultUrl, poppins } from "@/core"
 import { Toaster } from "sonner"
+import { SkeletonTheme } from "react-loading-skeleton"
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
@@ -36,18 +37,20 @@ export default function RootLayout({
         <link rel="icon" href="/logo.webp" />
       </head>
       <body className={`${poppins.className} bg-bg-100 antialiased overflow-x-hidden`}>
-        {children}
-        <Toaster
-          richColors
-          toastOptions={{
-            unstyled: true,
-            classNames: {
-              toast: 'w-full py-3 px-4 rounded-lg text-sm flex items-center justify-start gap-1.5',
-              error: '!text-red-100 !bg-red-800/40 backdrop-blur-sm border !border-red-800',
-              success: '!text-green-100 !bg-green-800/40 backdrop-blur-sm border !border-green-800'
-            }
-          }}
-        />
+        <SkeletonTheme baseColor="#202020" highlightColor="#444">
+          {children}
+          <Toaster
+            richColors
+            toastOptions={{
+              unstyled: true,
+              classNames: {
+                toast: 'w-full py-3 px-4 rounded-lg text-sm flex items-center justify-start gap-1.5',
+                error: '!text-red-100 !bg-red-800/40 backdrop-blur-sm border !border-red-800',
+                success: '!text-green-100 !bg-green-800/40 backdrop-blur-sm border !border-green-800'
+              }
+            }}
+          />
+        </SkeletonTheme>
       </body>
     </html>
   )
