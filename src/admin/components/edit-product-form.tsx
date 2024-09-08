@@ -61,7 +61,10 @@ export const EditProductForm = ({
     <ProductForm
       className={className}
       onSubmit={onSubmit}
-      defaultValues={product}
+      defaultValues={{
+        ...product,
+        description: product.description.replace(/<\/p>\s*<p>/g, '\n').replace(/<\/?p>/g, '')
+      }}
     />
   )
 }

@@ -27,7 +27,7 @@ export const ProductsTable = ({
     },
     {
       name: 'Descripción',
-      selector: (row) => row.description,
+      selector: (row) => row.description.replace(/<\/p>\s*<p>/g, '\n').replace(/<\/?p>/g, ''),
       sortable: true
     },
     {
