@@ -12,13 +12,6 @@ export const metadata: Metadata = {
     description: "Catálogo de productos y servicios de KG Soluciones. Aquí verás los productos que ofrecemos para ti. Servicios integrales de diseño, modelado e impresión 3D; fabricación y reparación de sistemas de alarma para vehículos y hogares; instalación de cámaras de seguridad, portones eléctricos y domótica; gestión de seguridad y salud en el trabajo; desarrollo y mantenimiento de sistemas automatizados; y soporte técnico en electrónica y electricidad automotriz.",
     url: `${defaultUrl}/catalogo`,
     siteName: "Catálogo de productos - KG Soluciones",
-    images: [
-      {
-        url: "/logo.webp",
-        width: 1200,
-        height: 630
-      }
-    ],
     locale: "es-ES",
     type: "website"
   }
