@@ -41,6 +41,7 @@ export const EditProductForm = ({
 
     const newProduct: Product = {
       ...inputs,
+      description: inputs.description.split('\n').map(para => `<p>${para}</p>`).join(''),
       price: inputs.price ? parseInt(inputs.price) : undefined,
       id,
       images: images,
