@@ -52,7 +52,7 @@ async function ProductPage({ params: { id } }: Props) {
         }
       </section>
 
-      <ProductInfoContainer product={product} className="mt-6" />
+      <ProductInfoContainer product={product} className="mt-7" />
     </div>
   )
 }
