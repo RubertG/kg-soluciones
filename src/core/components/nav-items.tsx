@@ -1,7 +1,7 @@
 "use client"
 
 import { AnimatePresence, motion } from "framer-motion"
-import { NavItem } from "@/core"
+import { CartNavItem, NavItem } from "@/core"
 
 interface Props {
   open: boolean
@@ -44,6 +44,9 @@ export const NavItems = ({
                   </li>
                 ))
               }
+              <li>
+                <CartNavItem />
+              </li>
             </motion.ul>
           )
         }
@@ -56,6 +59,9 @@ export const NavItems = ({
             </li>
           ))
         }
+        <li>
+          <CartNavItem />
+        </li>
       </ul>
     </>
   )
