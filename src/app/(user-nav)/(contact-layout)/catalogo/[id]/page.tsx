@@ -24,8 +24,8 @@ export const generateMetadata = async ({ params: { id } }: Props): Promise<Metad
       images: [
         {
           url: products?.images[0].url ?? "",
-          width: 1200,
-          height: 630
+          width: 500,
+          height: 400
         }
       ],
       locale: "es-ES",
