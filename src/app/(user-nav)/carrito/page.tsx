@@ -1,6 +1,8 @@
 function CartPage() {
   return (
-    <>Carrito</>
+    <div className="mt-20 text-text-200">
+      Carrito
+    </div>
   )
 }
 
