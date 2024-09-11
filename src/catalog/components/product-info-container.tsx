@@ -42,6 +42,7 @@ export const ProductInfoContainer = ({
         }
 
         <ButtonsProducts
+          id={product.id}
           className="mt-6"
         />
       </aside>
