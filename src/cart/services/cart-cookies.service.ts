@@ -16,7 +16,7 @@ export const addCart = (id: string, quantity?: number) => {
   const cartCookies = getCookie(PATH_NAME) || "{}"
   const cart = JSON.parse(cartCookies) as Cart
 
-  if (!cart[id]) cart[id] = {
+  cart[id] = {
     ...(quantity ? { quantity } : {})
   }
 

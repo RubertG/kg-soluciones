@@ -1,1 +1,1 @@
-export * from "./services/cart-cookies.services"
+export * from "./services/cart-cookies.service"
