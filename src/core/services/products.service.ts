@@ -4,7 +4,6 @@ import { Product } from "../types/db/db"
 
 const NAME_COLLECTION = 'products'
 
-// Traer por categoria
 export const getProducts = async () => {
   try {
     const q = query(collection(db, NAME_COLLECTION), orderBy('createAt', 'desc'))
@@ -32,7 +31,13 @@ export const getProducts = async () => {
 export const getProduct = async (id: string) => {
   const data = await getDoc(doc(db, 'products', id))
 
-  if (!data.exists()) return null
+  if (!data.exists()) return {
+    product: null,
+    error: "Error al obtener producto"
+  }
 
-  return data.data() as Product
+  return {
+    product: data.data() as Product,
+    error: null
+  }
 }
