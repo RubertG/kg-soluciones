@@ -29,15 +29,21 @@ export const getProducts = async () => {
 }
 
 export const getProduct = async (id: string) => {
-  const data = await getDoc(doc(db, 'products', id))
+  try {
+    const data = await getDoc(doc(db, 'products', id))
 
-  if (!data.exists()) return {
-    product: null,
-    error: "Error al obtener producto"
-  }
+    if (!data.exists()) throw new Error()
 
-  return {
-    product: data.data() as Product,
-    error: null
+    return {
+      product: data.data() as Product,
+      error: null
+    }
+  } catch (error) {
+    console.log(error)
+    
+    return {
+      product: null,
+      error: "Error al obtener producto"
+    }
   }
 }
