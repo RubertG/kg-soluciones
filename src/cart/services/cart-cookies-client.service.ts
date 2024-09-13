@@ -47,5 +47,7 @@ export const getCart = async () => {
     }
   }))
 
+  console.log(getCookie(PATH_NAME))
+
   return newCart.filter(product => product !== null)
 }
