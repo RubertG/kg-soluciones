@@ -1,3 +1,4 @@
+import { getProduct } from "@/core"
 import { getCookie, setCookie } from "cookies-next"
 
 const PATH_NAME = "cart"
@@ -29,4 +30,22 @@ export const deleteCart = (id: string) => {
 
   delete cart[id]
   setCookie(PATH_NAME, JSON.stringify(cart))
+}
+
+export const getCart = async () => {
+  const cartCookies = getCookie(PATH_NAME) || "{}"
+  const cart = JSON.parse(cartCookies) as Cart
+
+  const newCart = await Promise.all(Object.keys(cart).map(async (key) => {
+    const { error, product } = await getProduct(key)
+
+    if (error || !product) return null
+
+    return {
+      ...product,
+      quantity: cart[key].quantity
+    }
+  }))
+
+  return newCart.filter(product => product !== null)
 }
