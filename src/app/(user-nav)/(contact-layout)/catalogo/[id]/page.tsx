@@ -11,19 +11,19 @@ interface Props {
 }
 
 export const generateMetadata = async ({ params: { id } }: Props): Promise<Metadata> => {
-  const products = await getProduct(id)
+  const { product } = await getProduct(id)
 
   return {
-    title: `${products?.name} - KG Soluciones`,
-    description: `${products?.description} - KG Soluciones`,
+    title: `${product?.name} - KG Soluciones`,
+    description: `${product?.description} - KG Soluciones`,
     openGraph: {
-      title: `${products?.name} - KG Soluciones`,
-      description: `${products?.description} - KG Soluciones`,
+      title: `${product?.name} - KG Soluciones`,
+      description: `${product?.description} - KG Soluciones`,
       url: `${defaultUrl}/catalogo/${id}`,
-      siteName: `${products?.name} - KG Soluciones`,
+      siteName: `${product?.name} - KG Soluciones`,
       images: [
         {
-          url: products?.images[0].url ?? "",
+          url: product?.images[0].url ?? "",
           width: 500,
           height: 400
         }
@@ -35,9 +35,9 @@ export const generateMetadata = async ({ params: { id } }: Props): Promise<Metad
 }
 
 async function ProductPage({ params: { id } }: Props) {
-  const product = await getProduct(id)
+  const { product, error } = await getProduct(id)
 
-  if (!product) return notFound()
+  if (!product || error) return notFound()
 
   return (
     <div className="mt-20 text-text-200">
