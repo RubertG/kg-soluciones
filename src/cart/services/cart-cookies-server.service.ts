@@ -21,7 +21,5 @@ export const getCartServer = async () => {
     }
   }))
 
-  console.log(cartCookies)
-
   return newCart.filter(product => product !== null)
 }
