@@ -1,6 +1,7 @@
 "use server"
 
 import { getProduct } from "@/core"
+import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 
 const PATH_NAME = "cart"
@@ -22,4 +23,27 @@ export const getCartServer = async () => {
   }))
 
   return newCart.filter(product => product !== null)
+}
+
+export const addCartServer = (id: string, quantity?: number) => {
+  const cookiesStore = cookies()
+  const cartCookies = cookiesStore.get(PATH_NAME)?.value || "{}"
+  const cart = JSON.parse(cartCookies) as Cart
+
+  cart[id] = {
+    ...(quantity ? { quantity } : {})
+  }
+
+  cookiesStore.set(PATH_NAME, JSON.stringify(cart))
+  revalidatePath("/carrito")
+}
+
+export const deleteCartServer = (id: string) => {
+  const cookiesStore = cookies()
+  const cartCookies = cookiesStore.get(PATH_NAME)?.value || "{}"
+  const cart = JSON.parse(cartCookies) as Cart
+
+  delete cart[id]
+  cookiesStore.set(PATH_NAME, JSON.stringify(cart))
+  revalidatePath("/carrito")
 }

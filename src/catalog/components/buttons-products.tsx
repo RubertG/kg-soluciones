@@ -3,7 +3,7 @@
 import { PrincipalActionButton, SecondaryActionButton } from "@/core"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { addCart, deleteCart, inCart as inCartService } from "@/cart"
+import { addCartServer, deleteCartServer, inCart as inCartService } from "@/cart"
 
 interface Props {
   className?: string
@@ -22,16 +22,16 @@ export const ButtonsProducts = ({
 
   const handleCart = () => {
     if (inCart) {
-      deleteCart(id)
+      deleteCartServer(id)
     } else {
-      addCart(id)
+      addCartServer(id)
     }
 
     setInCart(!inCart)
   }
 
   const handleQuote = () => {
-    if (!inCart) addCart(id)
+    if (!inCart) addCartServer(id)
 
     router.push(`/carrito/${id}`)
   }
