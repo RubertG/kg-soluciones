@@ -26,6 +26,21 @@ export const getCartServer = async () => {
   return newCart.filter(product => product !== null)
 }
 
+export const getCartServerById = async (id: string) => {
+  const cookiesStore = cookies()
+  const cartCookies = cookiesStore.get(PATH_NAME)?.value || "{}"
+  const cart = JSON.parse(cartCookies) as Cart
+
+  const { error, product } = await getProduct(id)
+
+  if (error || !product) return null
+
+  return {
+    ...product,
+    ...(cart[id]?.quantity ? { quantity: cart[id].quantity } : {})
+  }
+}
+
 export const addCartServer = (id: string, quantity?: number) => {
   const cookiesStore = cookies()
   const cartCookies = cookiesStore.get(PATH_NAME)?.value || "{}"
