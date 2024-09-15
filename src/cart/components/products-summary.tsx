@@ -40,11 +40,11 @@ export const ProductsSummary = ({
                 </p>
                 {
                   total ? (
-                    <p className="text-text-100 font-bold flex items-center gap-2">
+                    <p className="text-text-200 font-bold flex items-center gap-2">
                       ${total}
                     </p>
                   ) : (
-                    <p className="text-text-100 font-bold flex items-center gap-2">
+                    <p className="text-text-200 font-bold flex items-center gap-2">
                       --
                     </p>
                   )
@@ -53,16 +53,11 @@ export const ProductsSummary = ({
             )
           })
         }
-        {
-          total > 0 && (
-            <li
-              className="flex items-center justify-between border-t border-bg-300 mt-2 pt-1"
-            >
-              <p className="text-text-200 overflow-hidden text-ellipsis whitespace-nowrap">Total</p>
-              <p className="text-text-100 font-bold">${roundToDecimals(total)}</p>
-            </li>
-          )
-        }
+
+        <li className="flex items-center justify-between border-t border-bg-300 mt-2 pt-2">
+          <p className="text-text-200 font-bold">Total</p>
+          <p className="text-text-200 font-bold">{total > 0 ? `$${roundToDecimals(total)}` : '--'}</p>
+        </li>
       </ul>
     </section>
   )
