@@ -53,7 +53,6 @@ export const ProductCart = ({
           >
             <Link
               href={`/catalogo/${product.id}`}
-              target="_blank"
               title={`Ir al producto ${product.name}`}>
               {product.name}
             </Link>
