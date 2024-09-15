@@ -13,9 +13,9 @@ interface Props {
 async function EditProductPage({
   params: { id }
 }: Props) {
-  const product = await getProduct(id)
+  const { product, error } = await getProduct(id)
 
-  if (!product) {
+  if (!product || error) {
     return (
       <>
         <p className="text-text-200 text-sm lg:text-base mb-4">
