@@ -3,6 +3,7 @@
 import { getProduct } from "@/core"
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
+import { Cart } from "../types/cart"
 
 const PATH_NAME = "cart"
 
