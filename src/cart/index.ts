@@ -1,1 +1,5 @@
-export * from "./services/cart-cookies.service"
+export * from "./services/cart-cookies-client.service"
+export * from "./services/cart-cookies-server.service"
+export * from "./components/products-summary"
+export * from "./components/product-cart"
+export * from "./components/products-cart"
