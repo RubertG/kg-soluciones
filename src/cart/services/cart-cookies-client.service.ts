@@ -1,4 +1,5 @@
 import { getCookie, setCookie } from "cookies-next"
+import { Cart } from "../types/cart"
 
 const PATH_NAME = "cart"
 
