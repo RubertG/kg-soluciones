@@ -2,6 +2,7 @@
 
 import { Counter } from "@/core"
 import { useQuantityProduct } from "@/catalog"
+import { useEffect } from "react"
 
 export const CounterProduct = ({
   className,
@@ -12,6 +13,11 @@ export const CounterProduct = ({
 }) => {
   const quatity = useQuantityProduct(state => state.quantity)
   const setQuantity = useQuantityProduct(state => state.setQuantity)
+
+  useEffect(() => {
+    setQuantity(0)
+    return () => setQuantity(0)
+  }, [])
 
   const handleSubstract = () => {
     if (quatity === 0) return
