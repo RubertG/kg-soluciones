@@ -4,6 +4,7 @@ import { PrincipalActionButton, SecondaryActionButton } from "@/core"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { addCartServer, deleteCartServer, inCart as inCartService } from "@/cart"
+import { useQuantityProduct } from "../stores/quantity-product.store"
 
 interface Props {
   className?: string
@@ -15,6 +16,7 @@ export const ButtonsProducts = ({
 }: Props) => {
   const [inCart, setInCart] = useState(false)
   const router = useRouter()
+  const counter = useQuantityProduct(state => state.quantity)
 
   useEffect(() => {
     setInCart(inCartService(id))
@@ -24,14 +26,14 @@ export const ButtonsProducts = ({
     if (inCart) {
       deleteCartServer(id)
     } else {
-      addCartServer(id)
+      addCartServer(id, counter > 0 ? counter : undefined)
     }
 
     setInCart(!inCart)
   }
 
   const handleQuote = () => {
-    if (!inCart) addCartServer(id)
+    if (!inCart) addCartServer(id, counter > 0 ? counter : undefined)
 
     router.push(`/carrito/${id}`)
   }
