@@ -8,11 +8,12 @@ import { useQuantityProduct } from "../stores/quantity-product.store"
 
 interface Props {
   className?: string
+  disabled?: boolean
   id: string
 }
 
 export const ButtonsProducts = ({
-  className, id
+  className, id, disabled = false
 }: Props) => {
   const [inCart, setInCart] = useState(false)
   const router = useRouter()
@@ -41,10 +42,16 @@ export const ButtonsProducts = ({
   return (
     <footer
       className={`flex gap-3 gap-y-4 lg:gap-5 flex-wrap ${className}`}>
-      <PrincipalActionButton onClick={handleQuote}>
+      <PrincipalActionButton
+        aria-disabled={disabled}
+        onClick={handleQuote}
+      >
         Cotizar producto
       </PrincipalActionButton>
-      <SecondaryActionButton onClick={handleCart}>
+      <SecondaryActionButton
+        aria-disabled={disabled}
+        onClick={handleCart}
+      >
         {inCart ? "Eliminar del carrito" : "Añadir al carrito"}
       </SecondaryActionButton>
     </footer>
