@@ -10,7 +10,7 @@ export const Header = ({
   className
 }: Props) => {
   return (
-    <header className={`h-screen max-h-[900px] lg:max-h-[650px] md:grid md:grid-cols-[auto_35%] md:items-center px-4 xl:px-0 max-w-6xl mx-auto ${className}`}>
+    <header className={`h-screen max-h-[900px] lg:max-h-[650px] md:grid md:grid-cols-[auto_35%] md:items-center max-w-6xl mx-auto ${className}`}>
       <HeaderDecoration />
       <section className="md:-mt-4">
         <h1 className="text-text-100 text-[2.5rem] font-bold text-center md:text-start md:text-6xl entry-animation">

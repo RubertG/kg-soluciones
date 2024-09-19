@@ -9,7 +9,7 @@ export const Contact = ({
 }: Props) => {
   return (
     <section
-      className={`max-w-6xl mx-auto px-4 xl:px-0 relative ${className}`}
+      className={`max-w-6xl mx-auto relative ${className}`}
     >
       <div id="contacto" className="absolute top-0 -mt-16" />
       <h2 className="text-text-100 text-4xl font-bold text-center md:text-[3.4rem]">
