@@ -1,10 +1,10 @@
 "use client"
 
 import { PrincipalActionButton, SecondaryActionButton } from "@/core"
-import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { addCartServer, deleteCartServer, inCart as inCartService } from "@/cart"
 import { useQuantityProduct } from "../stores/quantity-product.store"
+import { useTransitionRouter } from "next-view-transitions"
 
 interface Props {
   className?: string
@@ -16,7 +16,7 @@ export const ButtonsProducts = ({
   className, id, disabled = false
 }: Props) => {
   const [inCart, setInCart] = useState(false)
-  const router = useRouter()
+  const router = useTransitionRouter()
   const counter = useQuantityProduct(state => state.quantity)
 
   useEffect(() => {

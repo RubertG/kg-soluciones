@@ -15,10 +15,10 @@ export const generateMetadata = async ({ params: { id } }: Props): Promise<Metad
 
   return {
     title: `${product?.name} - KG Soluciones`,
-    description: `${product?.description} - KG Soluciones`,
+    description: `${product?.description.replace(/<\/p>\s*<p>/g, '\n').replace(/<\/?p>/g, '')}`,
     openGraph: {
       title: `${product?.name} - KG Soluciones`,
-      description: `${product?.description} - KG Soluciones`,
+      description: `${product?.description.replace(/<\/p>\s*<p>/g, '\n').replace(/<\/?p>/g, '')}`,
       url: `${defaultUrl}/catalogo/${id}`,
       siteName: `${product?.name} - KG Soluciones`,
       images: [
