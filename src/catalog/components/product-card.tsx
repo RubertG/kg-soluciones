@@ -1,6 +1,6 @@
 import { Product } from "@/core/types/db/db"
+import { Link } from "next-view-transitions"
 import Image from "next/image"
-import Link from "next/link"
 
 interface Props {
   product: Product
