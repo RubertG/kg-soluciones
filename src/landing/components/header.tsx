@@ -40,7 +40,7 @@ export const Header = ({
       </section>
 
       <Image
-        className="w-full mt-8 md:mt-0 img-mask max-w-[350px] mx-auto entry-animation"
+        className="w-full mt-8 md:mt-0 img-mask max-w-[300px] lg:max-w-[350px] mx-auto entry-animation"
         src="/assets/perfil.webp"
         alt="Kevin Gonzalez - KG Soluciones"
         width={488}
